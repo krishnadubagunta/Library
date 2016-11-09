@@ -1,0 +1,42 @@
+<html>
+<head>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+ 	 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$(this).onLoad(function(){
+			$("userSideBar").animate({
+				display:'block';
+			});
+		});
+	});
+</script>
+</head>
+<body>
+	<div id="userSideBar" >
+		<form action="" method="POST">
+			<div id="cardDiv" >
+				<input type="text" id="cardID" placeholder="Card Number" class="textFieldID"/>
+			</div>
+			<input type = "submit" id="firstSubmit" value="Reader">
+			<hr id="horizontalLine">
+			<div id="adminTextDIV">
+				<input type="text" placeholder="Username" id="username" class="textFieldID"/>
+			</div>
+			<div id="adminPassDIV">
+				<input type="password" id="password" placeholder ="Password" class="textFieldID">
+			</div>
+			<input type="submit" id="secondSubmit" value="Administrator">
+		</form>
+	</div>
+	<a class="topLinks" href="#" style="left: 15%;">HOME</a>
+	<a class="topLinks" href="#" style="left: 28%;">ABOUT</a>
+	<a class="topLinks" href="#" style="left: 41%;">SEARCH</a>
+	<a class="topLinks" href="#" style="left: 54%;">CONTACT US</a>
+
+	<p id="NJIT">NJIT</p>
+	<p id="LIBRARY" >LIBRARY</p>
+
+</body>
+</html>

@@ -1,0 +1,179 @@
+
+body{
+	margin:0px;
+  background-color:rgba(243, 157, 77, 1);
+  background-image:none;
+  position:static;
+  left:auto;
+  width:100%;
+  margin-left:0;
+  margin-right:0;
+  text-align:left;
+  position: relative;
+}
+
+.topLinks {
+	font-family: 'American Typewriter';
+	font-size: 14px;
+	font-style: 'American Typewriter';
+	font-variant: 'Regular';
+	color: black;
+	position: absolute;
+	top: 39px;
+	display: none;
+}
+
+#NJIT {
+	position:absolute;
+  	left:258px;
+  	top:0px;
+  	width:577px;
+  	height:288px;
+  	font-family:'Courier', 'Courier';
+  	font-weight:400;
+  	font-style:normal;
+  	font-size:240px;
+  	white-space:nowrap;
+  	display: none;
+}
+
+#LIBRARY {
+	position:absolute;
+  left:545px;
+  top:385px;
+  width:270px;
+  height:77px;
+  font-family:'Courier', 'Courier';
+  font-weight:400;
+  font-style:normal;
+  font-size:64px;
+  display: none;
+}
+
+#userSideBar {
+	background-color: #FFFEEB;
+	width: 22.5%;
+	height: 100%;
+	top: 0px;
+	right: -20px;
+	position: absolute;
+	box-shadow: -2px 0px 6px rgba(105, 104, 104, 0.349019607843137);
+	-moz-box-shadow:-2px 0px 6px rgba(105, 104, 104, 0.349019607843137);
+  -webkit-box-shadow:-2px 0px 6px rgba(105, 104, 104, 0.349019607843137);
+  border-radius: 5px;
+  display: none;
+}
+
+input[type="text"] {
+	font-family: 'Courier';
+	font-size: 14px;
+	height: 30px;
+	border:none;
+	vertical-align: middle;
+	background-color: inherit;
+}
+*:focus {
+	outline: none;
+}
+input[type="password"] {
+	display: block;
+	background-color: inherit;
+	font-family: 'Courier';
+	font-size: 14px;
+	height: 30px;
+	vertical-align: middle;
+	border:none;
+}
+
+::-webkit-input-placeholder {
+   color: black;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: black;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: black;  
+}
+
+:-ms-input-placeholder {  
+   color: black;  
+}
+
+#cardDiv {
+	border-color: black;
+	border-width: 1px;
+	border-radius: 5px;
+	height: 30px;
+	border-style: solid;	
+	position: absolute;
+	top: 84;
+	left: 72;
+	margin-left: auto;
+	margin-right: auto;
+	width: 187;
+}
+
+#adminTextDIV {
+	border-color: black;
+	border-width: 1px;
+	border-radius: 5px;
+	height: 30px;
+	border-style: solid;	
+	position: absolute;
+	left: 65;
+	top: 345;
+	margin-left: auto;
+	margin-right: auto;
+	width: 187;
+}
+
+#adminPassDIV {
+	border-color: black;
+	border-width: 1px;
+	border-radius: 5px;
+	height: 30px;
+	border-style: solid;	
+	position: absolute;
+	top: 434;
+	left: 65;
+	margin-left: auto;
+	margin-right: auto;
+	width: 187;
+}
+
+#firstSubmit {
+	top: 180;
+	left: 89;
+	height: 40px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#secondSubmit {
+	top: 522;
+	left: 89;
+	height: 40px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+input[type="submit"] {
+	font-family: 'Courier';
+	font-size: 13px;
+	background-color: black;
+	color: white;
+	position: absolute;
+  	width:150px;
+	border-radius: 5px;
+	border:none;
+}
+
+#horizontalLine {
+	margin-top: 286px;
+	width: 200;
+	margin-right: auto;
+	margin-left: auto;
+	border-top: 1px solid #000000;
+}
