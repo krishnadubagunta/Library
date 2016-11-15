@@ -20,7 +20,7 @@ body{
 	color: black;
 	position: absolute;
 	top: 39px;
-	display: none;
+	opacity: 0%;
 }
 
 #NJIT {
@@ -34,7 +34,7 @@ body{
   	font-style:normal;
   	font-size:240px;
   	white-space:nowrap;
-  	display: none;
+  	opacity: 0%;
 }
 
 #LIBRARY {
@@ -47,7 +47,7 @@ body{
   font-weight:400;
   font-style:normal;
   font-size:64px;
-  display: none;
+  opacity: 0%;
 }
 
 #userSideBar {
@@ -61,7 +61,7 @@ body{
 	-moz-box-shadow:-2px 0px 6px rgba(105, 104, 104, 0.349019607843137);
   -webkit-box-shadow:-2px 0px 6px rgba(105, 104, 104, 0.349019607843137);
   border-radius: 5px;
-  display: none;
+  opacity: 0%;
 }
 
 input[type="text"] {
