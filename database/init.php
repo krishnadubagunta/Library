@@ -201,4 +201,163 @@
 	}
 	//----------------END-------------
 
+
+	// -------CREATE TABLE BOOK----
+	$sql = "CREATE TABLE IF NOT EXISTS book 
+			( 	docid 		INT NOT NULL , 
+				ISBN   		VARCHAR(255) not null,
+
+				INDEX docid_index (docid),
+
+
+			    FOREIGN KEY (docid)
+			        REFERENCES docuemnt(docid)
+			        ON DELETE CASCADE,
+
+			PRIMARY KEY (`docid`)) 
+				ENGINE = InnoDB;";
+
+	if ($conn->query($sql) === TRUE) {
+	    echo "Table BOOK created successfully<br/>";
+	} else {
+	    echo "Error creating table BOOK: " . $conn->error . "<br/>";
+	}
+	//----------------END-------------
+
+	// -------CREATE TABLE WRITES----
+	$sql = "CREATE TABLE  IF NOT EXISTS writes 
+			( 	authorid 	INT NOT NULL , 
+				docid 		INT NOT NULL , 
+
+				INDEX auth_index (authorid),
+				INDEX doc_index (docid),
+
+			    FOREIGN KEY (authorid)
+			        REFERENCES author(authorid)
+			        ON DELETE CASCADE,
+
+			    FOREIGN KEY (docid)
+			        REFERENCES book(docid)
+			        ON DELETE CASCADE,
+
+				PRIMARY KEY (`docid`,`authorid`)) 
+				ENGINE = InnoDB;";
+
+	if ($conn->query($sql) === TRUE) {
+	    echo "Table WRITES created successfully<br/>";
+	} else {
+	    echo "Error creating table WRITES: " . $conn->error . "<br/>";
+	}
+	//----------------END-------------
+
+	// -------CREATE TABLE PROCEEDINGS----
+	$sql = "CREATE TABLE IF NOT EXISTS proceesings 
+			( 	docid 		INT NOT NULL , 
+				cdate       DATE not null,
+				clocation   VARCHAR(255) not null,
+				ceditor 	VARCHAR(255) not null,
+
+				INDEX docid_index (docid),
+
+
+			    FOREIGN KEY (docid)
+			        REFERENCES docuemnt(docid)
+			        ON DELETE CASCADE,
+
+			PRIMARY KEY (`docid`)) 
+				ENGINE = InnoDB;";
+
+	if ($conn->query($sql) === TRUE) {
+	    echo "Table PROCEEDINGS created successfully<br/>";
+	} else {
+	    echo "Error creating table PROCEEDINGS: " . $conn->error . "<br/>";
+	}
+	//----------------END-------------
+
+
+	// -------CREATE READER CHIEF EDITOR----
+	$sql = "CREATE TABLE  IF NOT EXISTS chief_editor 
+			( 	editorid 	INT NOT NULL AUTO_INCREMENT, 
+				ename 		VARCHAR(255) NOT NULL, 
+
+				PRIMARY KEY (`editorid`)) 
+				ENGINE = InnoDB;";
+
+	if ($conn->query($sql) === TRUE) {
+	    echo "Table CHIEF EDITOR created successfully<br/>";
+	} else {
+	    echo "Error creating table CHIEF EDITOR: " . $conn->error . "<br/>";
+	}
+	//----------------END-------------
+
+	// -------CREATE TABLE JOURNAL_VOLUME----
+	$sql = "CREATE TABLE IF NOT EXISTS journal_volume 
+			( 	docid 		INT NOT NULL, 
+				jvolume     INT NOT NULL,
+				editorid    INT NOT NULL,
+
+				INDEX docid_index (docid),
+				INDEX editor_index (editorid),
+
+
+			    FOREIGN KEY (docid)
+			        REFERENCES docuemnt(docid)
+			        ON DELETE CASCADE,  
+
+			    FOREIGN KEY (editorid)
+			        REFERENCES chief_editor(editorid)
+			        ON DELETE CASCADE,
+
+				PRIMARY KEY (`docid`)) 
+				ENGINE = InnoDB;";
+
+	if ($conn->query($sql) === TRUE) {
+	    echo "Table JOURNAL_VOLUME created successfully<br/>";
+	} else {
+	    echo "Error creating table JOURNAL_VOLUME: " . $conn->error . "<br/>";
+	}
+	//----------------END-------------
+
+	// -------CREATE READER JOURNAL_ISSUE----
+	$sql = "CREATE TABLE  IF NOT EXISTS journal_issue 
+			( 	docid 		INT NOT NULL,
+				issue_no 	INT NOT NULL,
+				scope 		VARCHAR(255) NOT NULL, 
+
+				INDEX docid_index (docid),
+				FOREIGN KEY (docid)
+			        REFERENCES journal_volume(docid)
+			        ON DELETE CASCADE,
+
+				PRIMARY KEY (`docid`,`issue_no`)) 
+				ENGINE = InnoDB;";
+
+	if ($conn->query($sql) === TRUE) {
+	    echo "Table JOURNAL_ISSUE created successfully<br/>";
+	} else {
+	    echo "Error creating table JOURNAL_ISSUE: " . $conn->error . "<br/>";
+	}
+	//----------------END-------------
+
+
+	// -------CREATE READER INV_EDITOR----
+	$sql = "CREATE TABLE  IF NOT EXISTS inv_editor 
+			( 	docid 		INT NOT NULL,
+				issue_no 	INT NOT NULL,
+				iename 		VARCHAR(255) NOT NULL, 
+
+				INDEX docid_index (docid,issue_no),
+				FOREIGN KEY (docid,issue_no)
+			        REFERENCES journal_issue(docid,issue_no)
+			        ON DELETE CASCADE,
+
+				PRIMARY KEY (`docid`,`issue_no`,`iename`)) 
+				ENGINE = InnoDB;";
+
+	if ($conn->query($sql) === TRUE) {
+	    echo "Table INV_EDITOR created successfully<br/>";
+	} else {
+	    echo "Error creating table INV_EDITOR: " . $conn->error . "<br/>";
+	}
+	//----------------END-------------
  ?>
