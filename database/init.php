@@ -186,5 +186,19 @@
 	}
 	//----------------END-------------
 
+	// -------CREATE READER AUTHOR----
+	$sql = "CREATE TABLE  IF NOT EXISTS author 
+			( 	authorid 	INT NOT NULL AUTO_INCREMENT , 
+				aname 		VARCHAR(255) NOT NULL , 
+
+				PRIMARY KEY (`authorid`)) 
+				ENGINE = InnoDB;";
+
+	if ($conn->query($sql) === TRUE) {
+	    echo "Table AUTHOR created successfully<br/>";
+	} else {
+	    echo "Error creating table AUTHOR: " . $conn->error . "<br/>";
+	}
+	//----------------END-------------
 
  ?>
