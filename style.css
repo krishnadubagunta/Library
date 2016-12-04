@@ -103,6 +103,7 @@ body {
   -webkit-box-shadow:-2px 0px 6px rgba(105, 104, 104, 0.349019607843137);*/
   border-radius: 5px;
   opacity: 0;
+  z-index: 1;
 }
 
 input[type="text"] {
