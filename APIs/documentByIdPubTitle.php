@@ -11,7 +11,7 @@
 		$sql = $sql . " or docid = $id ";
 	}
 	if ($title) {
-		$sql = $sql . " or title = '$title' ";
+		$sql = $sql . " or title LIKE '%$title%' ";
 	}
 	if ($publisher) {
 		//$sql = $sql . " or docid = $id ";
