@@ -1,4 +1,8 @@
 var App = {
+
+	init: function(){
+	},
+
 	//this is the function for any user login. Determined by first line
 	//readers do not enter password so if there is no password entered we
 	//assume it is a reader else it is an admin
@@ -33,12 +37,12 @@ var App = {
 	          dataType:"JSON",
 	          type: "POST",
 	          data: data,
-	          success: function(data){
-	          	callback(data);
+	          success: function(res){
+	          	callback(res);
 	          },
-	          error: function(data){
-				console.log(e);
-				callback(data);
+	          error: function(err){
+				console.log("Ajax Error: ",err);
+				callback(err);
 	          }
 	        })
 		}catch(e){
@@ -51,9 +55,38 @@ var App = {
 		//TBD
 	},
 
+	//All Function Related to Document Search
+	DocumentSearch:{
+		init: function(){
+			$("#docuemntSearchFormSubmit").on("click",this.SearchForDoc);
+			App.ajax(App.API.DOC_SEARCH, {}, function(documents){
+				App.DocumentSearch.RenderDocumentsTable(documents);
+			})
+		},
+
+		SearchForDoc: function(event){
+			event.preventDefault();
+			var form = this.closest("form");
+			var data = $(form).serialize();
+
+			App.ajax(App.API.DOC_SEARCH, data, function(documents){
+				console.log("SearchForDoc: ",documents);
+				App.DocumentSearch.RenderDocumentsTable(documents);
+			})
+		},
+
+		RenderDocumentsTable: function(documents){
+			$("#DocumentsTable").html("");
+			for (var i = 0; i < documents.length; i++) {
+				$("#DocumentsTable").append('<tr> <th scope="row">' + documents[i].docid + '</th> <td>' + documents[i].title + '</td> <td>' + documents[i].publisherid + '</td> </tr>');
+			}
+		}
+	},
+
 	//All API URLs will go here
 	API:{
 		ADMIN_LOGIN:"user/admin_login",
-		READER_LOGIN:"user/reader_login"
+		READER_LOGIN:"user/reader_login",
+		DOC_SEARCH: "../APIs/documentByIdPubTitle.php"
 	}
 }

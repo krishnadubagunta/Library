@@ -360,4 +360,6 @@
 	    echo "Error creating table INV_EDITOR: " . $conn->error . "<br/>";
 	}
 	//----------------END-------------
+
+	include('./seeder.php');
  ?>
