@@ -1,35 +1,53 @@
 <html>
 <head>
+<title>NJIT Library</title>
 	<link rel="stylesheet" href="style.css">
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
  	 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+ 	 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+ 	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+
 	<script type="text/javascript">
 	$(document).ready(function(){
-			$("userSideBar").animate({opacity : '1.0',right:'0px'});
+		var sidebar = $(".userSideBar");
+		var toplinks = $(".topLinks");
+		sidebar.animate({opacity : '1.0',right:'0px'},500);
+		$(".supposedNextPage").animate({right:'0px',opacity:'1.0'},500);
+		toplinks.animate({opacity : '1.0',top: '49px'},"slow");
+		$("#NJIT").animate({opacity : '1.0'},500);
+		$("#LIBRARY").animate({opacity : '1.0'},500);
 	});
+
 </script>
 </head>
 <body>
-	<div id="userSideBar" >
-		<form action="" method="POST">
+	<div class="userSideBar">
 			<div id="cardDiv" >
 				<input type="text" id="cardID" placeholder="Card Number" class="textFieldID"/>
 			</div>
-			<input type = "submit" id="firstSubmit" value="Reader">
+			<button id="firstSubmit" onclick="firstSubmitFun();">Reader</button>
 			<hr id="horizontalLine">
 			<div id="adminTextDIV">
-				<input type="text" placeholder="Username" id="username" class="textFieldID"/>
+				<input type="text" placeholder="Username" id="username" />
 			</div>
 			<div id="adminPassDIV">
-				<input type="password" id="password" placeholder ="Password" class="textFieldID">
+				<input type="password" id="password" placeholder ="Password" />
 			</div>
-			<input type="submit" id="secondSubmit" value="Administrator">
-		</form>
+			<button id="secondSubmit">Administrator</button>
 	</div>
-	<a class="topLinks" href="#" style="left: 15%;">HOME</a>
-	<a class="topLinks" href="#" style="left: 28%;">ABOUT</a>
-	<a class="topLinks" href="#" style="left: 41%;">SEARCH</a>
-	<a class="topLinks" href="#" style="left: 54%;">CONTACT US</a>
+	<div class="userNavBarRight">
+		<div>
+			<button id="logoutButton" onclick="secondSubmitFun();"></button>
+		</div>
+	</div>
+	<div class="supposedNextPage">
+		<div >
+		</div>
+	</div>
+	<a class="topLinks" href="#" style="left: 189px;">HOME</a>
+	<a class="topLinks" href="#" style="left: 397px;">ABOUT</a>
+	<a class="topLinks" href="#" style="left: 611px;">SEARCH</a>
+	<a class="topLinks" href="#" style="left: 835px;">CONTACT US</a>
 
 	<p id="NJIT">NJIT</p>
 	<p id="LIBRARY" >LIBRARY</p>

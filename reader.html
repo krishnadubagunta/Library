@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>NJIT Library</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+ 	 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+ 	 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+ 	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$(".supposedNextPage").animate({right:'0px',width:'100%',opacity:'1.0'},500);
+		$(".userNavBarRight").animate({left:'0px',opacity:'1.0'},500);
+		$("#readerName").animate({opacity:'1.0'},500);
+	});
+
+	var logoutFunc = function(){
+
+	}
+
+	var searchFunc = function(){
+
+	}
+
+	var renderResponse = function(data){
+	}
+
+</script>
+</head>
+<body>
+	<div class="userNavBarRight">
+		<div>
+			<p id="readerName"> Hello KD</p>
+			<button id="logoutButton" onclick="logoutFunc();"></button>
+		</div>
+		<div id="sectionNavigation">
+			<button style="top: 100px;">Your Reserve</button>
+			<button style="top: 150px;">Return Documents</button>
+			<button style="top: 200px;">Checkout</button>
+		</div>
+	</div>
+	<div class="supposedNextPage">
+			<button id="searchButton" onclick=""></button>
+			<div id="searchBox">
+				<input type="text" placeholder="Search" id="search" />
+			</div>
+			<div id="container"></div>
+	</div>
+	<footer>
+		<script type="text/javascript" src="./js/Datalayer.js"></script>
+		<script type="text/javascript" src="./js/App.js"></script>
+	</footer>
+</body>
+</html>

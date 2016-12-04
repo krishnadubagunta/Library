@@ -1,15 +1,41 @@
 
-body{
-	margin:0px;
+body {
+	margin: 0px;
   background-color:rgba(243, 157, 77, 1);
   background-image:none;
-  position:static;
+  position: static;
   left:auto;
   width:100%;
   margin-left:0;
   margin-right:0;
   text-align:left;
   position: relative;
+}
+
+#readerName {
+	color: black;
+	top: 15px;
+	left: 100px;
+	position: absolute;
+	opacity: 0;
+	font-family: 'American Typewriter';
+	font-size: 18px;
+	font-variant: 'Medium';
+}
+
+.supposedNextPage{
+	background-color: #F3F3F3;
+	width: 22.5%;
+	height: 100%;
+	top: 0px;
+	right: -80px;
+	position: absolute;
+	box-shadow: -2px 0px 6px rgba(105, 104, 104, 0.349019607843137);
+	-moz-box-shadow:-2px 0px 6px rgba(105, 104, 104, 0.349019607843137);
+  -webkit-box-shadow:-2px 0px 6px rgba(105, 104, 104, 0.349019607843137);
+  border-radius: 5px;
+  opacity: 0;
+  z-index: 0;
 }
 
 .topLinks {
@@ -20,7 +46,7 @@ body{
 	color: black;
 	position: absolute;
 	top: 39px;
-	opacity: 0%;
+	opacity: 0;
 }
 
 #NJIT {
@@ -34,34 +60,49 @@ body{
   	font-style:normal;
   	font-size:240px;
   	white-space:nowrap;
-  	opacity: 0%;
+  	opacity: 0;
 }
 
-#LIBRARY {
-	position:absolute;
-  left:545px;
-  top:385px;
-  width:270px;
-  height:77px;
-  font-family:'Courier', 'Courier';
-  font-weight:400;
-  font-style:normal;
-  font-size:64px;
-  opacity: 0%;
-}
-
-#userSideBar {
-	background-color: #FFFEEB;
+.userNavBarRight {
+	background-color: rgba(243, 157, 77, 1);
 	width: 22.5%;
 	height: 100%;
 	top: 0px;
-	right: -20px;
+	left: -80px;
 	position: absolute;
 	box-shadow: -2px 0px 6px rgba(105, 104, 104, 0.349019607843137);
 	-moz-box-shadow:-2px 0px 6px rgba(105, 104, 104, 0.349019607843137);
   -webkit-box-shadow:-2px 0px 6px rgba(105, 104, 104, 0.349019607843137);
   border-radius: 5px;
-  opacity: 0%;
+  opacity: 0;
+  z-index: 1;
+}
+
+#LIBRARY {
+	position:absolute;
+  	left:625px;
+  	top:425px;
+  	width:270px;
+  	height:77px;
+  	font-family:'Courier', 'Courier';
+  	font-weight:400;
+  	font-style:normal;
+  	font-size:64px;
+  	opacity: 0;
+}
+
+.userSideBar {
+	background-color: #F6F6F6;
+	width: 22.5%;
+	height: 100%;
+	top: 0px;
+	right: -80px;
+	position: absolute;
+	/*box-shadow: -2px 0px 6px rgba(105, 104, 104, 0.349019607843137);
+	-moz-box-shadow:-2px 0px 6px rgba(105, 104, 104, 0.349019607843137);
+  -webkit-box-shadow:-2px 0px 6px rgba(105, 104, 104, 0.349019607843137);*/
+  border-radius: 5px;
+  opacity: 0;
 }
 
 input[type="text"] {
@@ -89,18 +130,17 @@ input[type="password"] {
    color: black;
 }
 
-:-moz-placeholder { /* Firefox 18- */
+:-moz-placeholder {  /*Firefox 18- */
    color: black;  
 }
 
-::-moz-placeholder {  /* Firefox 19+ */
+::-moz-placeholder {  /*Firefox 19+ */
    color: black;  
 }
 
 :-ms-input-placeholder {  
    color: black;  
 }
-
 #cardDiv {
 	border-color: black;
 	border-width: 1px;
@@ -159,7 +199,7 @@ input[type="password"] {
 	margin-right: auto;
 }
 
-input[type="submit"] {
+button {
 	font-family: 'Courier';
 	font-size: 13px;
 	background-color: black;
@@ -176,4 +216,77 @@ input[type="submit"] {
 	margin-right: auto;
 	margin-left: auto;
 	border-top: 1px solid #000000;
+}
+
+#searchBox{
+	position: absolute;
+	background-color: #D8D8D8;
+	border-radius: 5px;
+	top: 15px;
+	right: 70px;
+	height: 30px;
+	width: 187;
+}
+
+#top {
+	position: absolute;
+	left: 30%;
+	top: 10%;
+}
+
+#branchDiv {
+	position: relative;
+	background-color: #D8D8D8;
+	border-radius: 5px;
+	top: 0px;
+	right: 20px;
+	height: 30px;
+	width: 187;
+}
+
+#mostborrowed {
+	top: 50px;
+	position: relative;
+	font-family: 'Courier'
+}
+
+.tops {
+	position: absolute;
+	opacity: 0.0;
+	left: 25%;
+	top: 10%;
+}
+
+#searchButton {
+	position: absolute;
+	right: 2%;
+	top: 15px;
+	height: 35px;
+	width: 35px;
+	border-radius: 15px;
+	background-color: inherit;
+	background-repeat: no-repeat;
+	background-image: url('search.svg');
+}
+
+#logoutButton {
+	position: absolute;
+	left: 80%;
+	top: 24px;
+	height: 30px;
+	width: 30px;
+	border-radius: 15px;
+	background-image: url('logout.svg');
+}
+
+#sectionNavigation {
+	position: relative;
+	border-color: inherit;
+	background-color: inherit;
+	border-width: 0px;
+	box-shadow: 0px;
+	color: black;
+	font-size: 16px;
+	left: 20%;
+	display: flex-block;
 }
