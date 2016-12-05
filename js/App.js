@@ -100,9 +100,11 @@ var App = {
 			console.log(documents);
 			$("#DocumentsTable").html("");
 			for (var i = 0; i < documents.length; i++) {
-				var status = "Available"
+				var status = "Available";
+				var action = "<button>Checkout</button> <button>Reserve</button> <button>Return</button>";
 				if (documents[i].status && documents[i].status ==="0000-00-00 00:00:00") {
-					status = "Not Available"
+					status = "Not Available";
+					action = "<button>Return</button>";
 				}
 
 				$("#DocumentsTable")
@@ -112,7 +114,7 @@ var App = {
 								'<td>' + documents[i].lname + '</td> '				+
 								'<td>' + documents[i].llocation + '</td>'			+
 								'<td>' + status + '</td>'			+
-								'<td> <button>Checkout</button> <button>Reserve</button> <button>Return</button></td>'			+
+								'<td>'+action+'</td>'			+
 							'</tr>');
 			}
 
