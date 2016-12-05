@@ -59,7 +59,7 @@ var App = {
 	DocumentSearch:{
 		init: function(){
 			$("#docuemntSearchFormSubmit").on("click",this.SearchForDoc);
-			App.ajax(App.API.DOC_SEARCH, {}, function(documents){
+			App.ajax(App.API.DOC_SEARCH, window.localStorage.getItem("DocumentSearchQuery") || {}, function(documents){
 				App.DocumentSearch.RenderDocumentsTable(documents);
 			})
 		},
@@ -68,18 +68,49 @@ var App = {
 			event.preventDefault();
 			var form = this.closest("form");
 			var data = $(form).serialize();
-
+			window.localStorage.setItem("DocumentSearchQuery",data);
 			App.ajax(App.API.DOC_SEARCH, data, function(documents){
 				console.log("SearchForDoc: ",documents);
 				App.DocumentSearch.RenderDocumentsTable(documents);
 			})
 		},
 
+		ViewDocument: function(event){
+			var element = $(event.target).parent();
+			window.location.href = "DocView.php?docid="+$(element).attr("id");
+		},
+
 		RenderDocumentsTable: function(documents){
 			$("#DocumentsTable").html("");
 			for (var i = 0; i < documents.length; i++) {
-				$("#DocumentsTable").append('<tr> <th scope="row">' + documents[i].docid + '</th> <td>' + documents[i].title + '</td> <td>' + documents[i].publisherid + '</td> </tr>');
+				$("#DocumentsTable").append('<tr class="documentRow" id="'+documents[i].docid+'"> <th scope="row">' + documents[i].docid + '</th> <td>' + documents[i].title + '</td> <td>' + documents[i].pubname + '</td> </tr>');
 			}
+			$(".documentRow").on("click",App.DocumentSearch.ViewDocument);
+		}
+	},
+
+	DocumentViewByBranch: {
+		init: function(){
+			App.ajax(App.API.DOCS_BY_ID, {docid:window.location.href.split("docid=")[1]}, function(documents){
+				App.DocumentViewByBranch.RenderDocumentsTable(documents);
+			})
+		},
+
+		RenderDocumentsTable: function(documents){
+			console.log(documents);
+			$("#DocumentsTable").html("");
+			for (var i = 0; i < documents.length; i++) {
+				$("#DocumentsTable")
+					.append('<tr class="documentRow" id="'+documents[i].copyno+'">' +
+								'<th scope="row">' + documents[i].docid + '</th>' 	+
+								'<td>' + documents[i].title + '</td> '				+
+								'<td>' + documents[i].lname + '</td> '				+
+								'<td>' + documents[i].llocation + '</td>'			+
+								'<td>' + "????" + '</td>'			+
+								'<td> <button>Checkout</button> <button>Reserve</button> <button>Return</button></td>'			+
+							'</tr>');
+			}
+
 		}
 	},
 
@@ -87,6 +118,7 @@ var App = {
 	API:{
 		ADMIN_LOGIN:"user/admin_login",
 		READER_LOGIN:"user/reader_login",
-		DOC_SEARCH: "../APIs/documentByIdPubTitle.php"
+		DOC_SEARCH: "../APIs/documentByIdPubTitle.php",
+		DOCS_BY_ID: "../APIs/GetAllDocCopiesById.php"
 	}
 }

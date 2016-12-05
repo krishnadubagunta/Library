@@ -6,28 +6,15 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 </head>
 <body>
-	<form style="width:500px; margin-left: calc(50% - 250px); background: #8ab8df; padding: 20px; border-radius: 12px" >
-	  <div class="form-group">
-	    <label for="docid">Document ID</label>
-	    <input type="number" class="form-control" id="docid" aria-describedby="docuemntId" placeholder="Enter Document ID" name="docid">
-	  </div>
-	  <div class="form-group">
-	    <label for="docTitle">Document Title</label>
-	    <input type="text" class="form-control" id="docTitle" aria-describedby="docTitle" placeholder="Enter Document Title" name="docTitle">
-	  </div>
-	  <div class="form-group">
-	    <label for="docPublisher">Document Publisher</label>
-	    <input type="text" class="form-control" id="docPublisher" aria-describedby="docPublisher" placeholder="Enter Document Publisher" name="docPublisher">
-	  </div>
-	  <button type="submit" class="btn btn-primary" id="docuemntSearchFormSubmit">Submit</button>
-	</form>
-
 	<table class="table" style="width:800px; margin-left: calc(50% - 400px); padding: 20px; border-radius: 12px; margin-top: 20px; border: 1px solid black;">
 	  <thead class="thead-inverse" style="background: #8ab8df">
 	    <tr>
 	      <th>Doc ID</th>
 	      <th>Title</th>
-	      <th>Publisher</th>
+	      <th>Branch Name</th>
+	      <th>Branch Location</th>
+	      <th>Status</th>
+	      <th>Actions</th>
 	    </tr>
 	  </thead>
 	  <tbody id="DocumentsTable">
@@ -38,19 +25,11 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 		<script type="text/javascript" src="../js/App.js"></script>
-		<script type="text/javascript">App.DocumentSearch.init();</script>
+		<script type="text/javascript">App.DocumentViewByBranch.init();</script>
 		<style type="text/css">
-			.documentRow:hover{
-				cursor: pointer;
-				color: white;
-				background: black;
-			}
-			.documentRow:active{
-				cursor: pointer;
-				color: blue;
-				background: black;
-			}
+
 		</style>
+
 	</footer>
 </body>
 </html>

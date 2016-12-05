@@ -5,7 +5,9 @@
 	$title = $_POST['docTitle'];
 	$publisher = $_POST['docPublisher'];
 
-	$sql = "SELECT * FROM docuemnt WHERE 1=0 ";
+	$sql = "SELECT * 
+			FROM docuemnt as d join publisher as p on d.publisherid = p.publisherid 
+			WHERE 1=0 ";
 
 	if ($id) {
 		$sql = $sql . " or docid = $id ";
@@ -14,7 +16,7 @@
 		$sql = $sql . " or title LIKE '%$title%' ";
 	}
 	if ($publisher) {
-		//$sql = $sql . " or docid = $id ";
+		$sql = $sql . " or pubname LIKE '%$publisher%' ";
 	}
 
 	$jsonHack = false;
