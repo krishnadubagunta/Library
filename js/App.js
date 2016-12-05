@@ -77,7 +77,7 @@ var App = {
 
 		ViewDocument: function(event){
 			var element = $(event.target).parent();
-			window.location.href = "DocView.php?docid="+$(element).attr("id");
+			window.location.href = "DocView.html?docid="+$(element).attr("id");
 		},
 
 		RenderDocumentsTable: function(documents){
@@ -100,13 +100,18 @@ var App = {
 			console.log(documents);
 			$("#DocumentsTable").html("");
 			for (var i = 0; i < documents.length; i++) {
+				var status = "Available"
+				if (documents[i].status && documents[i].status ==="0000-00-00 00:00:00") {
+					status = "Not Available"
+				}
+
 				$("#DocumentsTable")
 					.append('<tr class="documentRow" id="'+documents[i].copyno+'">' +
 								'<th scope="row">' + documents[i].docid + '</th>' 	+
 								'<td>' + documents[i].title + '</td> '				+
 								'<td>' + documents[i].lname + '</td> '				+
 								'<td>' + documents[i].llocation + '</td>'			+
-								'<td>' + "????" + '</td>'			+
+								'<td>' + status + '</td>'			+
 								'<td> <button>Checkout</button> <button>Reserve</button> <button>Return</button></td>'			+
 							'</tr>');
 			}

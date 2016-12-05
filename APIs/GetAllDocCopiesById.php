@@ -3,7 +3,7 @@
 
 	$id = $_POST['docid'];
 
-	$sql = "SELECT * 
+	$sql = "SELECT *, (select rdtime from borrows where borrows.copyno = copy.libid) as status
 			FROM docuemnt 
 				JOIN copy 
 				JOIN branch 
