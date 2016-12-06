@@ -21,18 +21,22 @@
 </head>
 <body>
 	<div class="userSideBar">
+			<form>
 			<div id="cardDiv" >
-				<input type="text" id="cardID" placeholder="Card Number" class="textFieldID"/>
+				<input type="text" name="readerID" id="cardID" placeholder="Card Number" class="textFieldID"/>
 			</div>
-			<button id="firstSubmit" onclick="firstSubmitFun();">Reader</button>
+			<input type="submit" id="firstSubmit" onclick="bttonClick();" value="Reader" />
+		</form>
 			<hr id="horizontalLine">
+		<form>
 			<div id="adminTextDIV">
 				<input type="text" placeholder="Username" id="username" />
 			</div>
 			<div id="adminPassDIV">
 				<input type="password" id="password" placeholder ="Password" />
 			</div>
-			<button id="secondSubmit">Administrator</button>
+			<input type="submit" id="secondSubmit" value="Administrator" />
+		</form>
 	</div>
 	<div class="userNavBarRight">
 		<div>
