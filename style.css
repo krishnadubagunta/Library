@@ -127,6 +127,17 @@ input[type="password"] {
 	border:none;
 }
 
+input[type="submit"] {
+	font-family: 'Courier';
+	font-size: 13px;
+	background-color: black;
+	color: white;
+	position: absolute;
+  	width:150px;
+	border-radius: 5px;
+	border:none;
+}
+
 ::-webkit-input-placeholder {
    color: black;
 }
