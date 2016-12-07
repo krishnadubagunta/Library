@@ -1,34 +1,5 @@
 var App = {
 
-	init: function(){
-	},
-
-	//this is the function for any user login. Determined by first line
-	//readers do not enter password so if there is no password entered we
-	//assume it is a reader else it is an admin
-	login: function(id, password){
-		var loginURI = id && password ? App.API.ADMIN_LOGIN : App.API.READER_LOGIN;
-		var userData = {
-			id:id,
-			password:password	
-		};
-
-		if (!id) {
-			App.modalAlert("Please Enter an id");
-			return;
-		}
-
-		App.ajax(loginURI,userData,function(data){
-			//True because APIs are not writen yet so not sure what i will return on fail
-			if (true) {
-				Datalayer.updateDatalayer(data);
-				//Other functions once user logs in can go here, like redirects and transistions
-			}else{
-				App.modalAlert("Sorry Please Check Your Id")
-			}
-		});
-	},
-
 	//This is the main ajax function to be used
 	ajax:function(url,data,callback){
 		try{
@@ -55,6 +26,33 @@ var App = {
 		//TBD
 	},
 
+	LoginPage: {
+		init:function(){
+			$("#readerLoginButton").on('click', App.LoginPage.readerLogin);
+			$("#adminLoginButton").on('click', App.LoginPage.adminLogin);
+		},
+
+		readerLogin: function(event){
+			event.preventDefault();
+			var form = this.closest("form");
+			var data = $(form).serialize();
+
+			App.ajax(App.API.READER_LOGIN, data, function(readerData){
+				console.log("READER_LOGIN: ",readerData);
+			});
+		},
+
+		adminLogin: function(event){
+			event.preventDefault();
+			var form = this.closest("form");
+			var data = $(form).serialize();
+
+			App.ajax(App.API.ADMIN_LOGIN, data, function(adminData){
+				console.log("ADMIN_LOGIN: ",adminData);
+			});
+		}
+	},
+
 	//All Function Related to Document Search
 	DocumentSearch:{
 		init: function(){
@@ -69,6 +67,7 @@ var App = {
 			var form = this.closest("form");
 			var data = $(form).serialize();
 			window.localStorage.setItem("DocumentSearchQuery",data);
+
 			App.ajax(App.API.DOC_SEARCH, data, function(documents){
 				console.log("SearchForDoc: ",documents);
 				App.DocumentSearch.RenderDocumentsTable(documents);
@@ -123,8 +122,8 @@ var App = {
 
 	//All API URLs will go here
 	API:{
-		ADMIN_LOGIN:"user/admin_login",
-		READER_LOGIN:"user/reader_login",
+		ADMIN_LOGIN:"../APIs/adminLogin.php",
+		READER_LOGIN:"../APIs/readerLogin.php",
 		DOC_SEARCH: "../APIs/documentByIdPubTitle.php",
 		DOCS_BY_ID: "../APIs/GetAllDocCopiesById.php"
 	}

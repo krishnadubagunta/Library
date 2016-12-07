@@ -6,21 +6,30 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 </head>
 <body>
-	<form style="width:500px; margin-left: calc(50% - 250px); background: #8ab8df; padding: 20px; border-radius: 12px" >
-	  <div class="form-group">
-	    <label for="docid">Document ID</label>
-	    <input type="number" class="form-control" id="docid" aria-describedby="docuemntId" placeholder="Enter Document ID" name="docid">
-	  </div>
-	  <div class="form-group">
-	    <label for="docTitle">Document Title</label>
-	    <input type="text" class="form-control" id="docTitle" aria-describedby="docTitle" placeholder="Enter Document Title" name="docTitle">
-	  </div>
-	  <div class="form-group">
-	    <label for="docPublisher">Document Publisher</label>
-	    <input type="text" class="form-control" id="docPublisher" aria-describedby="docPublisher" placeholder="Enter Document Publisher" name="docPublisher">
-	  </div>
-	  <button type="submit" class="btn btn-primary" id="docuemntSearchFormSubmit">Submit</button>
-	</form>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">
+					<label>CS631</label>
+				</a>
+				<form class="navbar-form navbar-left" role="search">
+					<div class="form-group">
+
+						<input type="number" class="form-control" id="docid" aria-describedby="docuemntId" placeholder="Enter Doc ID" name="docid">
+					</div>
+					<div class="form-group">
+
+						<input type="text" class="form-control" id="docTitle" aria-describedby="docTitle" placeholder="Enter Doc Title" name="docTitle">
+					</div>
+					<div class="form-group">
+
+						<input type="text" class="form-control" id="docPublisher" aria-describedby="docPublisher" placeholder="Enter Doc Publisher" name="docPublisher">
+					</div>
+					<button type="submit" class="btn btn-primary" id="docuemntSearchFormSubmit">Submit</button>
+				</form>
+			</div>
+		</div>
+	</nav>
 
 	<table class="table" style="width:800px; margin-left: calc(50% - 400px); padding: 20px; border-radius: 12px; margin-top: 20px; border: 1px solid black;">
 	  <thead class="thead-inverse" style="background: #8ab8df">
