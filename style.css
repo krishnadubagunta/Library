@@ -2,9 +2,8 @@
 body {
 	margin: 0px;
   background-color:rgba(243, 157, 77, 1);
-  background-image:none;
-  position: static;
   left:auto;
+  right: auto;
   width:100%;
   margin-left:0;
   margin-right:0;
@@ -12,11 +11,15 @@ body {
   position: relative;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 #readerName {
 	color: black;
 	top: 15px;
 	left: 100px;
-	position: absolute;
+	position: relative;
 	opacity: 0;
 	font-family: 'American Typewriter';
 	font-size: 18px;
@@ -29,7 +32,7 @@ body {
 	height: 100%;
 	top: 0px;
 	right: -80px;
-	position: absolute;
+	position: relative;
 	box-shadow: -2px 0px 6px rgba(105, 104, 104, 0.349019607843137);
 	-moz-box-shadow:-2px 0px 6px rgba(105, 104, 104, 0.349019607843137);
   -webkit-box-shadow:-2px 0px 6px rgba(105, 104, 104, 0.349019607843137);
@@ -44,13 +47,13 @@ body {
 	font-style: 'American Typewriter';
 	font-variant: 'Regular';
 	color: black;
-	position: absolute;
+	position: relative;
 	top: 39px;
 	opacity: 0;
 }
 
 #NJIT {
-	position:absolute;
+	position:relative;
   	left:258px;
   	top:0px;
   	width:577px;
@@ -68,7 +71,7 @@ body {
 	width: 22.5%;
 	height: 100%;
 	top: 0px;
-	left: -80px;
+	right: -80px;
 	position: absolute;
 	box-shadow: -2px 0px 6px rgba(105, 104, 104, 0.349019607843137);
 	-moz-box-shadow:-2px 0px 6px rgba(105, 104, 104, 0.349019607843137);
@@ -79,7 +82,7 @@ body {
 }
 
 #LIBRARY {
-	position:absolute;
+	position:relative;
   	left:625px;
   	top:425px;
   	width:270px;
@@ -96,8 +99,8 @@ body {
 	width: 22.5%;
 	height: 100%;
 	top: 0px;
-	right: -80px;
-	position: absolute;
+	left: 80%;
+	position: relative;
 	/*box-shadow: -2px 0px 6px rgba(105, 104, 104, 0.349019607843137);
 	-moz-box-shadow:-2px 0px 6px rgba(105, 104, 104, 0.349019607843137);
   -webkit-box-shadow:-2px 0px 6px rgba(105, 104, 104, 0.349019607843137);*/
@@ -132,7 +135,10 @@ input[type="submit"] {
 	font-size: 13px;
 	background-color: black;
 	color: white;
-	position: absolute;
+	top: 150px;
+	left: 80px;
+	height: 50px;
+	position: relative;
   	width:150px;
 	border-radius: 5px;
 	border:none;
@@ -159,9 +165,9 @@ input[type="submit"] {
 	border-radius: 5px;
 	height: 30px;
 	border-style: solid;	
-	position: absolute;
-	top: 84;
-	left: 72;
+	position: relative;
+	top: 5%;
+	left: 10%;
 	margin-left: auto;
 	margin-right: auto;
 	width: 187;
@@ -173,7 +179,7 @@ input[type="submit"] {
 	border-radius: 5px;
 	height: 30px;
 	border-style: solid;	
-	position: absolute;
+	position: relative;
 	left: 65;
 	top: 345;
 	margin-left: auto;
@@ -187,7 +193,7 @@ input[type="submit"] {
 	border-radius: 5px;
 	height: 30px;
 	border-style: solid;	
-	position: absolute;
+	position: relative;
 	top: 434;
 	left: 65;
 	margin-left: auto;
@@ -223,7 +229,7 @@ button {
 }
 
 #horizontalLine {
-	margin-top: 286px;
+	margin-top: 256px;
 	width: 200;
 	margin-right: auto;
 	margin-left: auto;
@@ -231,7 +237,7 @@ button {
 }
 
 #searchBox{
-	position: absolute;
+	position: relative;
 	background-color: #D8D8D8;
 	border-radius: 5px;
 	top: 15px;
@@ -263,14 +269,14 @@ button {
 }
 
 .tops {
-	position: absolute;
+	position: relative;
 	opacity: 0.0;
 	left: 25%;
 	top: 10%;
 }
 
 #searchButton {
-	position: absolute;
+	position: relative;
 	right: 2%;
 	top: 15px;
 	height: 35px;
@@ -282,7 +288,7 @@ button {
 }
 
 #logoutButton {
-	position: absolute;
+	position: relative;
 	left: 80%;
 	top: 24px;
 	height: 30px;

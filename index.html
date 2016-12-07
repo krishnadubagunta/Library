@@ -4,6 +4,7 @@
 	<link rel="stylesheet" href="style.css">
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
  	 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+ 	 <meta name="viewport" content="width=device-width, initial-scale=1.0">
  	 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
  	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 
@@ -11,7 +12,7 @@
 	$(document).ready(function(){
 		var sidebar = $(".userSideBar");
 		var toplinks = $(".topLinks");
-		sidebar.animate({opacity : '1.0',right:'0px'},500);
+		sidebar.animate({opacity : '1.0',left:'77.5%'},500);
 		toplinks.animate({opacity : '1.0',top: '49px'},"slow");
 		$("#NJIT").animate({opacity : '1.0'},500);
 		$("#LIBRARY").animate({opacity : '1.0'},500);
@@ -21,14 +22,14 @@
 </head>
 <body>
 	<div class="userSideBar">
-		<form>
+		<form id="readerForm">
 			<div id="cardDiv" >
 				<input type="text" name="readerID" id="cardID" placeholder="Card Number" class="textFieldID"/>
 			</div>
 			<input type="submit" id="readerLoginButton" value="Reader" />
 		</form>
 			<hr id="horizontalLine">
-		<form>
+		<form id="adminForm">
 			<div id="adminTextDIV">
 				<input type="text" placeholder="Username" id="username" />
 			</div>
@@ -37,15 +38,6 @@
 			</div>
 			<input type="submit"  style="top: 180px;" id="adminLoginButton" value="Administrator" />
 		</form>
-	</div>
-	<div class="userNavBarRight">
-		<div>
-			<button id="logoutButton" onclick="secondSubmitFun();"></button>
-		</div>
-	</div>
-	<div class="supposedNextPage">
-		<div >
-		</div>
 	</div>
 	<a class="topLinks" href="#" style="left: 189px;">HOME</a>
 	<a class="topLinks" href="#" style="left: 397px;">ABOUT</a>
