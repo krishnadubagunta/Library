@@ -28,17 +28,25 @@ var App = {
 
 	LoginPage: {
 		init:function(){
+			console.log("LoginPage init");
 			$("#readerLoginButton").on('click', App.LoginPage.readerLogin);
 			$("#adminLoginButton").on('click', App.LoginPage.adminLogin);
 		},
 
 		readerLogin: function(event){
 			event.preventDefault();
+			console.log("Loggin In reader...");
 			var form = this.closest("form");
 			var data = $(form).serialize();
 
 			App.ajax(App.API.READER_LOGIN, data, function(readerData){
 				console.log("READER_LOGIN: ",readerData);
+				if(readerData){
+					window.localStorage.setItem("userid",readerData.readerid);
+					window.localStorage.setItem("username",readerData.readername);
+				}else{
+					alert("Please Check Your Login Info");
+				}
 			});
 		},
 
@@ -122,8 +130,8 @@ var App = {
 
 	//All API URLs will go here
 	API:{
-		ADMIN_LOGIN:"../APIs/adminLogin.php",
-		READER_LOGIN:"../APIs/readerLogin.php",
+		ADMIN_LOGIN:"./APIs/adminLogin.php",
+		READER_LOGIN:"./APIs/readerLogin.php",
 		DOC_SEARCH: "../APIs/documentByIdPubTitle.php",
 		DOCS_BY_ID: "../APIs/GetAllDocCopiesById.php"
 	}
