@@ -44,6 +44,7 @@ var App = {
 				if(readerData){
 					window.localStorage.setItem("userid",readerData.readerid);
 					window.localStorage.setItem("username",readerData.readername);
+					window.location.href = "reader.html"
 				}else{
 					alert("Please Check Your Login Info");
 				}
@@ -57,6 +58,13 @@ var App = {
 
 			App.ajax(App.API.ADMIN_LOGIN, data, function(adminData){
 				console.log("ADMIN_LOGIN: ",adminData);
+				if(adminData){
+					window.localStorage.setItem("userid",adminData.readerid);
+					window.localStorage.setItem("username",adminData.readername);
+					window.location.href = "admin.html";
+				}else{
+					alert("Please Check Your Login Info");
+				}
 			});
 		}
 	},
