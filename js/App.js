@@ -1,5 +1,14 @@
 var App = {
 
+	init:function(){
+		$("#search").on('keyup',function(e){
+			App.ajax(App.API.AUTO_SEARCH, {searchTerm: e.target.value}, function(search){
+				console.log("Auto Search: ",search);
+				App.DocumentSearch.RenderDocumentsTable(search);
+			});
+		})
+	},
+
 	//This is the main ajax function to be used
 	ajax:function(url,data,callback){
 		try{
@@ -141,6 +150,7 @@ var App = {
 		ADMIN_LOGIN:"./APIs/adminLogin.php",
 		READER_LOGIN:"./APIs/readerLogin.php",
 		DOC_SEARCH: "../APIs/documentByIdPubTitle.php",
-		DOCS_BY_ID: "../APIs/GetAllDocCopiesById.php"
+		DOCS_BY_ID: "../APIs/GetAllDocCopiesById.php",
+		AUTO_SEARCH:"./APIs/AutoSearch.php"
 	}
 }

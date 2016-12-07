@@ -44,12 +44,26 @@
 			<div id="searchBox">
 				<input type="text" placeholder="Search" id="search" />
 			</div>
-			<div id="container"></div>
+			<div id="container">
+				<table class="table" style="width:800px; margin-left: calc(55% - 400px); padding: 20px; border-radius: 12px; margin-top: 50px; border: 1px solid black;position: absolute;">
+				  <thead class="thead-inverse" style="background: #8ab8df">
+				    <tr>
+				      <th>Doc ID</th>
+				      <th>Title</th>
+				      <th>Publisher</th>
+				    </tr>
+				  </thead>
+				  <tbody id="DocumentsTable">
+				  </tbody>
+				</table>
+			</div>
 	</div>
 	<footer>
-		<script type="text/javascript" src="./js/Datalayer.js"></script>
 		<script type="text/javascript" src="./js/App.js"></script>
-		<script type="text/javascript">$("#readerName").html("HELLO " + window.localStorage.getItem("username"))</script>
+		<script type="text/javascript">
+			App.init();
+			$("#readerName").html("Hello " + window.localStorage.getItem("username"))
+		</script>
 	</footer>
 </body>
 </html>
