@@ -6,7 +6,8 @@
 	$sql = "SELECT *, 
 			(select rdtime from borrows where  borrows.docid = docuemnt.docid and borrows.copyno = copy.copyno ORDER BY bornumber DESC LIMIT 0, 1) as status,
 			(select readerId from borrows where  borrows.docid = docuemnt.docid and borrows.copyno = copy.copyno ORDER BY bornumber DESC LIMIT 0, 1) as readerIdofBorrower,
-			(select bornumber from borrows where  borrows.docid = docuemnt.docid and borrows.copyno = copy.copyno ORDER BY bornumber DESC LIMIT 0, 1) as bornumber
+			(select bornumber from borrows where  borrows.docid = docuemnt.docid and borrows.copyno = copy.copyno ORDER BY bornumber DESC LIMIT 0, 1) as bornumber,
+			(select readerId from reserve where  reserve.docid = docuemnt.docid and reserve.copyno = copy.copyno ORDER BY resnumber DESC LIMIT 0, 1) as readeridReservation
 			FROM docuemnt 
 				JOIN copy 
 				JOIN branch

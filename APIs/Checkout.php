@@ -11,6 +11,10 @@
 			VALUES (NULL, '$userid', '$docId', '$copyNo', '$libid', CURRENT_TIME(), '');";
 
 	$query = mysqli_query($conn, $sql);
+
+	$sql = "DELETE FROM `reserve` WHERE docid = $docId and copyno = $copyNo and libid = $libid";
+
+	$query = mysqli_query($conn, $sql);
 	print_r($sql); 
 
  ?>

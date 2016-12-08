@@ -132,7 +132,7 @@ var App = {
 			for (var i = 0; i < documents.length; i++) {
 				var status = "Available";
 				var checkoutButton = "<button onClick='App.DocumentViewByBranch.Checkout("+documents[i].docid+","+documents[i].copyno+","+documents[i].libid+")' style='width: auto; position: relative;'>Checkout</button> | ";
-				var reserveButton = "<button  style='width: auto; position: relative;'>Reserve</button> | ";
+				var reserveButton = "<button  onClick='App.DocumentViewByBranch.Reserve("+documents[i].docid+","+documents[i].copyno+","+documents[i].libid+")' style='width: auto; position: relative;'>Reserve</button> ";
 				var returnButton =  "<button onClick='App.DocumentViewByBranch.Return("+documents[i].bornumber+")' style='width: auto; position: relative;'>Return</button>";
 
 				console.log(documents[i].status)
@@ -146,6 +146,15 @@ var App = {
 					
 				}else{
 					var action = checkoutButton + reserveButton;
+				}
+
+				if (documents[i].readeridReservation) {
+					var status = "Reserved";
+					if (documents[i].readeridReservation === window.localStorage.getItem("userid")) {
+						var action =  checkoutButton;
+					}else{
+						var action =  "N/A";
+					}
 				}
 
 				$("#DocumentsTable")
@@ -185,6 +194,20 @@ var App = {
 				console.log(": ",adminData);
 				window.location.reload();
 			});
+		},
+
+		Reserve: function(docId, copyNo,libid){
+			var data = {
+				docId:docId,
+				copyNo:copyNo,
+				libid:libid,
+				readerId: window.localStorage.getItem("userid")
+			};
+
+			App.ajax(App.API.RESERVE, data, function(adminData){
+				console.log(": ",adminData);
+				window.location.reload();
+			});
 		}
 	},
 
@@ -196,6 +219,7 @@ var App = {
 		DOCS_BY_ID: "./APIs/GetAllDocCopiesById.php",
 		AUTO_SEARCH:"./APIs/AutoSearch.php",
 		CHECKOUT: "./APIs/Checkout.php",
-		RETURN: "./APIs/Return.php"
+		RETURN: "./APIs/Return.php",
+		RESERVE: "./APIs/Reserve.php"
 	}
 }
