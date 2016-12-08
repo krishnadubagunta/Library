@@ -5,8 +5,14 @@ var App = {
 			App.ajax(App.API.AUTO_SEARCH, {searchTerm: e.target.value}, function(search){
 				console.log("Auto Search: ",search);
 				App.DocumentSearch.RenderDocumentsTable(search);
+
 			});
-		})
+		});
+		App.ajax(App.API.AUTO_SEARCH, {searchTerm: "citro"}, function(search){
+			console.log("Auto Search: ",search);
+			App.DocumentSearch.RenderDocumentsTable(search);
+
+		});
 	},
 
 	//This is the main ajax function to be used
@@ -101,7 +107,7 @@ var App = {
 
 		ViewDocument: function(event){
 			var element = $(event.target).parent();
-			window.location.href = "DocView.html?docid="+$(element).attr("id");
+			window.location.href = "./DocView.html?docid="+$(element).attr("id");
 		},
 
 		RenderDocumentsTable: function(documents){
@@ -125,20 +131,21 @@ var App = {
 			$("#DocumentsTable").html("");
 			for (var i = 0; i < documents.length; i++) {
 				var status = "Available";
-				var action = "<button>Checkout</button> <button>Reserve</button> <button>Return</button>";
+				var action = "<button style='width: auto; position: relative;'>Checkout</button> <button style='width: auto; position: relative;'>Reserve</button> <button style='width: auto; position: relative;'>Return</button>";
 				if (documents[i].status && documents[i].status ==="0000-00-00 00:00:00") {
 					status = "Not Available";
 					action = "<button>Return</button>";
 				}
 
 				$("#DocumentsTable")
-					.append('<tr class="documentRow" id="'+documents[i].copyno+'">' +
-								'<th scope="row">' + documents[i].docid + '</th>' 	+
-								'<td>' + documents[i].title + '</td> '				+
-								'<td>' + documents[i].lname + '</td> '				+
-								'<td>' + documents[i].llocation + '</td>'			+
-								'<td>' + status + '</td>'			+
-								'<td>'+action+'</td>'			+
+					.append('<tr style="text-align:center" class="documentRow" id="'+documents[i].copyno+'">' +
+								'<th style="border: 1px solid black;">' + documents[i].docid + '</th>' 	+
+								'<td style="border: 1px solid black;">' + documents[i].title + '</td> '				+			
+								'<td style="border: 1px solid black;">' + documents[i].pubname + '</td> '				+
+								'<td style="border: 1px solid black;">' + documents[i].lname + '</td> '				+
+								'<td style="border: 1px solid black;">' + documents[i].llocation + '</td>'			+
+								'<td style="border: 1px solid black;">' + status + '</td>'			+
+								'<td style="border: 1px solid black;">'+action+'</td>'			+
 							'</tr>');
 			}
 
@@ -150,7 +157,7 @@ var App = {
 		ADMIN_LOGIN:"./APIs/adminLogin.php",
 		READER_LOGIN:"./APIs/readerLogin.php",
 		DOC_SEARCH: "../APIs/documentByIdPubTitle.php",
-		DOCS_BY_ID: "../APIs/GetAllDocCopiesById.php",
+		DOCS_BY_ID: "./APIs/GetAllDocCopiesById.php",
 		AUTO_SEARCH:"./APIs/AutoSearch.php"
 	}
 }

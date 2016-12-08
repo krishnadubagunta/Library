@@ -1,0 +1,62 @@
+<html>
+<head>
+<title>NJIT Library</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+ 	 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+ 	 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+ 	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$(".supposedNextPage").animate({right:'0px',width:'100%',opacity:'1.0'},500);
+		$(".userNavBarRight").animate({left:'0px',opacity:'1.0'},500);
+		$("#readerName").animate({opacity:'1.0'},500);
+	});
+</script>
+</head>
+<body>
+	<div class="userNavBarRight">
+		<div>
+			<p id="readerName">{PLACEHOLDER}</span></p>
+			<button id="logoutButton" onclick="logoutFunc();"></button>
+		</div>
+		<div id="sectionNavigation">
+			<button style="top: 100px;">Your Reserve</button>
+			<button style="top: 150px;">Return Documents</button>
+			<button style="top: 200px;">Checkout</button>
+		</div>
+	</div>
+	<div class="supposedNextPage">
+			<button id="searchButton" onclick=""></button>
+			<div id="searchBox">
+				<input type="text" placeholder="Search" id="search" />
+			</div>
+			<div id="container">
+				<table class="table" style="width: 70%; margin-left: 23%; top: 12px; padding-top: 60px;">
+				  <thead class="thead-inverse" style="background: #8ab8df">
+				    <tr>
+				      <th>Doc ID</th>
+				      <th>Title</th>
+				      <th>Publisher</th>
+				      <th>Branch Name</th>
+				      <th>Branch Location</th>
+				      <th>Status</th>
+				      <th>Actions</th>
+				    </tr>
+				  </thead>
+				  <tbody id="DocumentsTable">
+				  </tbody>
+				</table>
+			</div>
+	</div>
+	<footer>
+		<script type="text/javascript" src="./js/App.js"></script>
+		<script type="text/javascript">
+			App.init();
+			App.DocumentViewByBranch.init();
+			$("#readerName").html("Hello " + window.localStorage.getItem("username"))
+		</script>
+	</footer>
+</body>
+</html>
