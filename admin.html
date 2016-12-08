@@ -25,7 +25,7 @@
 	}
 
 	var addReader = function(){
-		$("#mostborrowed").slideUp(1000,function(){$("#top").slideUp(500,function(){$("#top").hide();});});
+		$("#mostborrowed").slideUp("fast",function(){$("#top").slideUp("fast",function(){$("#top").hide();});});
 	}
 	
 	var logoutFunc = function(){
@@ -39,7 +39,7 @@
 	var toptens = function(){
 		$("#top").show();
 		$("#top").slideDown();
-		$(".tops").animate({opacity:'1.0'},500);
+		$(".tops").animate({opacity:'1.0'},"fast");
 	}
 
 	var showMenuMostB = function(){
@@ -83,8 +83,20 @@
 						</div>
 					</div>
 				</div>
-
 			</div>
+			<form>
+				
+			</form>
+			<form>
+				
+			</form>
+			<form>
+				
+			</form>
+			<form>
+				
+			</form>
+		</div>
 	</div>
 	<footer>
 		<script type="text/javascript" src="./js/Datalayer.js"></script>

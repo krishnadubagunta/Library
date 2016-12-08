@@ -266,7 +266,8 @@ button {
 
 #mostborrowed {
 	top: 50px;
-	position: absolute;
+	left: 250px;
+	position: relative;
 	font-family: 'Courier'
 }
 
