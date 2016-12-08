@@ -4,8 +4,9 @@
 	$id = $_POST['docid'];
 
 	$sql = "SELECT *, 
-			(select rdtime from borrows where  borrows.docid = docuemnt.docid and borrows.copyno = copy.copyno) as status,
-			(select readerId from borrows where  borrows.docid = docuemnt.docid and borrows.copyno = copy.copyno) as readerIdofBorrower
+			(select rdtime from borrows where  borrows.docid = docuemnt.docid and borrows.copyno = copy.copyno ORDER BY bornumber DESC LIMIT 0, 1) as status,
+			(select readerId from borrows where  borrows.docid = docuemnt.docid and borrows.copyno = copy.copyno ORDER BY bornumber DESC LIMIT 0, 1) as readerIdofBorrower,
+			(select bornumber from borrows where  borrows.docid = docuemnt.docid and borrows.copyno = copy.copyno ORDER BY bornumber DESC LIMIT 0, 1) as bornumber
 			FROM docuemnt 
 				JOIN copy 
 				JOIN branch

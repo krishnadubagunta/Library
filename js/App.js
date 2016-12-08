@@ -132,8 +132,8 @@ var App = {
 			for (var i = 0; i < documents.length; i++) {
 				var status = "Available";
 				var checkoutButton = "<button onClick='App.DocumentViewByBranch.Checkout("+documents[i].docid+","+documents[i].copyno+","+documents[i].libid+")' style='width: auto; position: relative;'>Checkout</button> | ";
-				var reserveButton = "<button style='width: auto; position: relative;'>Reserve</button> | ";
-				var returnButton =  "<button style='width: auto; position: relative;'>Return</button>";
+				var reserveButton = "<button  style='width: auto; position: relative;'>Reserve</button> | ";
+				var returnButton =  "<button onClick='App.DocumentViewByBranch.Return("+documents[i].bornumber+")' style='width: auto; position: relative;'>Return</button>";
 
 				console.log(documents[i].status)
 				if (documents[i].status && documents[i].status === "0000-00-00 00:00:00") {
@@ -145,7 +145,7 @@ var App = {
 					}
 					
 				}else{
-					var action = checkoutButton + reserveButton + returnButton;
+					var action = checkoutButton + reserveButton;
 				}
 
 				$("#DocumentsTable")
@@ -174,6 +174,17 @@ var App = {
 				console.log("ADMIN_LOGIN: ",adminData);
 				window.location.reload();
 			});
+		},
+
+		Return: function(bornumber){
+			var data = {
+				bornumber:bornumber
+			};
+
+			App.ajax(App.API.RETURN, data, function(adminData){
+				console.log(": ",adminData);
+				window.location.reload();
+			});
 		}
 	},
 
@@ -184,6 +195,7 @@ var App = {
 		DOC_SEARCH: "../APIs/documentByIdPubTitle.php",
 		DOCS_BY_ID: "./APIs/GetAllDocCopiesById.php",
 		AUTO_SEARCH:"./APIs/AutoSearch.php",
-		CHECKOUT: "./APIs/Checkout.php"
+		CHECKOUT: "./APIs/Checkout.php",
+		RETURN: "./APIs/Return.php"
 	}
 }
