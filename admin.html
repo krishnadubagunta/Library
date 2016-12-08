@@ -10,6 +10,9 @@
 
 	<script type="text/javascript">
 	$(document).ready(function(){
+		$(".docAdditionClass").slideUp();
+		$(".branchViewClass").slideUp();
+		$(".readerViewClass").slideUp();
 		$(".supposedNextPage").animate({right:'0px',width:'100%',opacity:'1.0'},500);
 		$(".userNavBarRight").animate({left:'0px',opacity:'1.0'},500);
 		$("#readerName").animate({opacity:'1.0'},500);
@@ -22,6 +25,13 @@
 		$("#mostborrowed").slideUp();
 		$("#top").slideUp();
 		$("#top").hide();
+		$("#mostborrowed").slideToggle();
+		$(".branchViewClass").animate({opacity:'0.0'},300);
+		$(".branchViewClass").slideUp();
+		$(".readerViewClass").animate({opacity:'0.0'},300);
+		$(".readerViewClass").slideUp();
+		$(".docAdditionClass").animate({opacity:'1.0'},300);
+		$(".docAdditionClass").slideDown();
 	}
 
 	var addReader = function(){
@@ -40,6 +50,36 @@
 		$("#top").show();
 		$("#top").slideDown();
 		$(".tops").animate({opacity:'1.0'},"fast");
+		$(".readerViewClass").animate({opacity:'0.0'},300);
+		$(".readerViewClass").slideUp();
+		$(".docAdditionClass").animate({opacity:'0.0'},300);
+		$(".docAdditionClass").slideUp();
+		$(".branchViewClass").animate({opacity:'0.0'},300);
+		$(".branchViewClass").slideUp();
+	}
+
+	var branchViewFunc = function() {
+		$("#top").hide();
+		$("#top").slideUp();
+		$(".tops").animate({opacity:'0.0'},"fast");
+		$(".readerViewClass").animate({opacity:'0.0'},300);
+		$(".readerViewClass").slideUp();
+		$(".docAdditionClass").animate({opacity:'0.0'},300);
+		$(".docAdditionClass").slideUp();
+		$(".branchViewClass").animate({opacity:'1.0'},300);
+		$(".branchViewClass").slideDown();
+	}
+
+	var readerViewFunc = function() {
+		$("#top").hide();
+		$("#top").slideUp();
+		$(".tops").animate({opacity:'0.0'},"fast");
+		$(".branchViewClass").animate({opacity:'0.0'},300);
+		$(".branchViewClass").slideUp();
+		$(".readerViewClass").animate({opacity:'1.0'},300);
+		$(".readerViewClass").slideDown();
+		$(".docAdditionClass").animate({opacity:'0.0'},300);
+		$(".docAdditionClass").slideUp();
 	}
 
 	var showMenuMostB = function(){
@@ -61,8 +101,8 @@
 			<button style="top: 100px;" onclick="addDocument();">Add Document</button>
 			<button style="top: 150px;" onclick="addReader();">Add Reader</button>
 			<button style="top: 200px;" onclick="toptens();">Top 10s</button>
-			<button style="top: 250px;" onclick="">View Branch</button>
-			<button style="top: 300px;" onclick="">View Reader</button>
+			<button style="top: 250px;" onclick="branchViewFunc()">View Branch</button>
+			<button style="top: 300px;" onclick="readerViewFunc()">View Reader</button>
 		</div>
 	</div>
 	<div class="supposedNextPage">
@@ -83,19 +123,31 @@
 						</div>
 					</div>
 				</div>
+				<form class="docAdditionClass" style="opacity: 0.0">
+				<p style="top: 40px; position: relative;">Document Name : </p><div class="textBox" style="top:40px; position: relative;">
+					<input type="text" name="docName">
+				</div>
+				<p style="top: 40px; position: relative;">Publish Date : </p><div class="textBox" style="top:40px;position: relative;">
+					<input type="text" name="publishDate">
+				</div>
+				<p style="top: 40px; position: relative;">Publisher ID : </p><div class="textBox" style="top:40px;position: relative;">
+					<input type="text" name="publisherID">
+				</div>
+				<input type="submit" id="documentAddButton" value="Add Document" style="top: 80px; left : 50%; position: relative;" />
+			</form>
+			<form class="branchViewClass">
+				<p style="top: 40px; position: relative;"> Branch ID : </p><div class="textBox" style="top:40px;position: relative;">
+					<input type="text" name="branchID">
+				</div>
+				<input type="submit" id="branchSearchButton" value="Search Branch" style="top: 80px; left : 50%; position: relative;" />
+			</form>
+			<form class="readerViewClass">
+				<p style="top: 40px; position: relative;">Reader ID : </p><div class="textBox" style="top:40px; position: relative;">
+					<input type="text" name="readerID">
+				</div>
+				<input type="submit" id="readerSearchButton" value="Search Reader" style="top: 80px; left : 50%; position: relative;" />
+			</form>
 			</div>
-			<form>
-				
-			</form>
-			<form>
-				
-			</form>
-			<form>
-				
-			</form>
-			<form>
-				
-			</form>
 		</div>
 	</div>
 	<footer>
