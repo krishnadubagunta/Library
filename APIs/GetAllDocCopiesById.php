@@ -3,10 +3,13 @@
 
 	$id = $_POST['docid'];
 
-	$sql = "SELECT *, (select rdtime from borrows where borrows.copyno = copy.libid) as status
+	$sql = "SELECT *, 
+			(select rdtime from borrows where  borrows.docid = docuemnt.docid and borrows.copyno = copy.copyno) as status,
+			(select readerId from borrows where  borrows.docid = docuemnt.docid and borrows.copyno = copy.copyno) as readerIdofBorrower
 			FROM docuemnt 
 				JOIN copy 
-				JOIN branch 
+				JOIN branch
+
 			WHERE docuemnt.docid = copy.docid 
 					and branch.libid = copy.libid
 					and docuemnt.docid = $id";

@@ -131,10 +131,21 @@ var App = {
 			$("#DocumentsTable").html("");
 			for (var i = 0; i < documents.length; i++) {
 				var status = "Available";
-				var action = "<button style='width: auto; position: relative;'>Checkout</button> <button style='width: auto; position: relative;'>Reserve</button> <button style='width: auto; position: relative;'>Return</button>";
-				if (documents[i].status && documents[i].status ==="0000-00-00 00:00:00") {
+				var checkoutButton = "<button onClick='App.DocumentViewByBranch.Checkout("+documents[i].docid+","+documents[i].copyno+","+documents[i].libid+")' style='width: auto; position: relative;'>Checkout</button> | ";
+				var reserveButton = "<button style='width: auto; position: relative;'>Reserve</button> | ";
+				var returnButton =  "<button style='width: auto; position: relative;'>Return</button>";
+
+				console.log(documents[i].status)
+				if (documents[i].status && documents[i].status === "0000-00-00 00:00:00") {
 					status = "Not Available";
-					action = "<button>Return</button>";
+					if (documents[i].readerIdofBorrower === window.localStorage.getItem("userid")) {
+						var action =  returnButton;
+					}else{
+						var action =  "N/A";
+					}
+					
+				}else{
+					var action = checkoutButton + reserveButton + returnButton;
 				}
 
 				$("#DocumentsTable")
@@ -145,10 +156,24 @@ var App = {
 								'<td style="border: 1px solid black;">' + documents[i].lname + '</td> '				+
 								'<td style="border: 1px solid black;">' + documents[i].llocation + '</td>'			+
 								'<td style="border: 1px solid black;">' + status + '</td>'			+
-								'<td style="border: 1px solid black;">'+action+'</td>'			+
+								'<td style="border: 1px solid black;">'+action+'</td>' +
 							'</tr>');
 			}
 
+		},
+
+		Checkout: function(docId, copyNo,libid){
+			var data = {
+				docId:docId,
+				copyNo:copyNo,
+				libid:libid,
+				readerId: window.localStorage.getItem("userid")
+			};
+
+			App.ajax(App.API.CHECKOUT, data, function(adminData){
+				console.log("ADMIN_LOGIN: ",adminData);
+				window.location.reload();
+			});
 		}
 	},
 
@@ -158,6 +183,7 @@ var App = {
 		READER_LOGIN:"./APIs/readerLogin.php",
 		DOC_SEARCH: "../APIs/documentByIdPubTitle.php",
 		DOCS_BY_ID: "./APIs/GetAllDocCopiesById.php",
-		AUTO_SEARCH:"./APIs/AutoSearch.php"
+		AUTO_SEARCH:"./APIs/AutoSearch.php",
+		CHECKOUT: "./APIs/Checkout.php"
 	}
 }
