@@ -9,7 +9,7 @@ var App = {
 			App.ajax(App.API.AUTO_SEARCH, {searchTerm: e.target.value}, function(search){
 				console.log("Auto Search: ",search);
 				App.DocumentSearch.RenderDocumentsTable(search);
-
+				$(".removeOnSearch").remove();
 			});
 		});
 
@@ -117,7 +117,7 @@ var App = {
 		RenderDocumentsTable: function(documents){
 			$("#DocumentsTable").html("");
 			for (var i = 0; i < documents.length; i++) {
-				$("#DocumentsTable").append('<tr class="documentRow" id="'+documents[i].docid+'"> <th scope="row">' + documents[i].docid + '</th> <td>' + documents[i].title + '</td> <td>' + documents[i].pubname + '</td> </tr>');
+				$("#DocumentsTable").append('<tr style="text-align:center" class="documentRow" id="'+documents[i].docid+'"> <th style="border: 1px solid black;">' + documents[i].docid + '</th> <td style="border: 1px solid black;">' + documents[i].title + '</td> <td style="border: 1px solid black;">' + documents[i].pubname + '</td> </tr>');
 			}
 			$(".documentRow").on("click",App.DocumentSearch.ViewDocument);
 		}

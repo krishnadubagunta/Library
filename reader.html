@@ -32,7 +32,7 @@
 				<input type="text" placeholder="Search" id="search" />
 			</div>
 			<div id="container">
-				<table class="table" style="width:800px; margin-left: calc(55% - 400px); padding-top: 60px;	 top: 12px; position: relative;">
+				<table  style="width:800px; margin-left: calc(55% - 400px); padding-top: 60px;	 top: 12px; position: relative;border: none;">
 				  <thead class="thead-inverse" style="background: rgba(243, 157, 77, 1);">
 				    <tr>
 				      <th>Doc ID</th>
@@ -48,7 +48,7 @@
 	<footer>
 		<script type="text/javascript" src="./js/App.js"></script>
 		<script type="text/javascript">
-			App.LoginPage.init();
+			App.init();
 			$("#readerName").html("Hello " + window.localStorage.getItem("username"))
 		</script>
 	</footer>
