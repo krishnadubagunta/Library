@@ -226,6 +226,24 @@ var App = {
 		}
 	},
 
+	AdminPage: {
+
+		init:function(){
+			$("#documentAddButton").on('click',function(event){
+				event.preventDefault();
+				console.log("Adding Book...");
+				var form = this.closest("form");
+				var data = $(form).serialize();
+
+				App.ajax(App.API.ADD_DOC, data, function(data){
+					console.log("READER_LOGIN: ",data);
+					alert("DONE!");
+				});
+			})
+		}
+
+	},
+
 	//All API URLs will go here
 	API:{
 		ADMIN_LOGIN:"./APIs/adminLogin.php",
@@ -236,6 +254,7 @@ var App = {
 		CHECKOUT: "./APIs/Checkout.php",
 		RETURN: "./APIs/Return.php",
 		RESERVE: "./APIs/Reserve.php",
-		GET_RESERVATIONS: './APIs/GetReservationsById.php'
+		GET_RESERVATIONS: './APIs/GetReservationsById.php',
+		ADD_DOC:'./APIs/AddDoc.php'
 	}
 }
