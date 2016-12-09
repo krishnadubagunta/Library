@@ -168,8 +168,8 @@ var App = {
 								'<td style="border: 1px solid black;">' + documents[i].pubname + '</td> '				+
 								'<td style="border: 1px solid black;">' + documents[i].lname + '</td> '				+
 								'<td style="border: 1px solid black;">' + documents[i].llocation + '</td>'			+
-								'<td style="border: 1px solid black;">' + status + '</td>'			+
-								'<td style="border: 1px solid black;">'+action+'</td>' +
+								'<td style="border: 1px solid black;" class="statusCell">' + status + '</td>'			+
+								'<td style="border: 1px solid black;" class="actionCell">'+action+'</td>' +
 							'</tr>');
 			}
 
@@ -215,6 +215,17 @@ var App = {
 		}
 	},
 
+	ReservationsPage:{
+		init: function(){
+			App.ajax(App.API.GET_RESERVATIONS, {readerId: window.localStorage.getItem("userid")}, function(res){
+				console.log("GET_RESERVATIONS: ",res);
+				App.DocumentViewByBranch.RenderDocumentsTable(res);
+				$(".actionCell").remove();
+				$(".statusCell").remove();
+			});
+		}
+	},
+
 	//All API URLs will go here
 	API:{
 		ADMIN_LOGIN:"./APIs/adminLogin.php",
@@ -224,6 +235,7 @@ var App = {
 		AUTO_SEARCH:"./APIs/AutoSearch.php",
 		CHECKOUT: "./APIs/Checkout.php",
 		RETURN: "./APIs/Return.php",
-		RESERVE: "./APIs/Reserve.php"
+		RESERVE: "./APIs/Reserve.php",
+		GET_RESERVATIONS: './APIs/GetReservationsById.php'
 	}
 }

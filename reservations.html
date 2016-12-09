@@ -37,8 +37,6 @@
 				      <th>Publisher</th>
 				      <th class="removeOnSearch">Branch Name</th>
 				      <th class="removeOnSearch">Branch Location</th>
-				      <th class="removeOnSearch">Status</th>
-				      <th class="removeOnSearch">Actions</th>
 				    </tr>
 				  </thead>
 				  <tbody id="DocumentsTable">
@@ -50,7 +48,7 @@
 		<script type="text/javascript" src="./js/App.js"></script>
 		<script type="text/javascript">
 			
-
+			App.ReservationsPage.init();
 			$("#readerName").html("Hello " + window.localStorage.getItem("username"))
 		</script>
 	</footer>
