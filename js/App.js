@@ -1,6 +1,10 @@
 var App = {
 
 	init:function(){
+		$("#logoutButton").on('click',function(){
+			window.location.href = "index.html";
+		});
+
 		$("#search").on('keyup',function(e){
 			App.ajax(App.API.AUTO_SEARCH, {searchTerm: e.target.value}, function(search){
 				console.log("Auto Search: ",search);
@@ -8,10 +12,10 @@ var App = {
 
 			});
 		});
+
 		App.ajax(App.API.AUTO_SEARCH, {searchTerm: "citro"}, function(search){
 			console.log("Auto Search: ",search);
 			App.DocumentSearch.RenderDocumentsTable(search);
-
 		});
 	},
 
