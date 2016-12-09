@@ -332,6 +332,13 @@ button {
 	z-index: 1;	
 }
 
+select {
+	width: 185px;
+	height: 30px;
+	border: none;
+	background-color: inherit;
+}
+
 .branchViewClass {
 	font-family: 'Courier';
 	font-size: 13px;

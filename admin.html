@@ -19,7 +19,58 @@
 		$("#mostborrowed").slideUp();
 		$("#top").slideUp();
 		$("#top").hide();
+
 	});
+
+	var changeFunction = function(){
+		var selectedOpt = document.getElementById("docType").value;
+		console.log(selectedOpt);
+		switch(selectedOpt){
+			case "Books":
+				$("books").slideDown();
+				$("books").animate({opacity:'1.0'},"fast");
+				$("proceeds").slideUp();
+				$("proceeds").animate({opacity:'0.0'},"fast");
+				$("jissue").slideUp();
+				$("jissue").animate({opacity:'0.0'},"fast");
+				$("jvol").slideUp();
+				$("jvol").animate({opacity:'0.0'},"fast");
+			break;
+			case "Proceedings":
+				$("books").slideUp();
+				$("books").animate({opacity:'0.0'},"fast");
+				$("proceeds").slideDown();
+				$("proceeds").animate({opacity:'1.0'},"fast");
+				$("jissue").slideUp();
+				$("jissue").animate({opacity:'0.0'},"fast");
+				$("jvol").slideUp();
+				$("jvol").animate({opacity:'0.0'},"fast");
+			break;
+			case "JIssue":
+				$("books").slideUp();
+				$("books").animate({opacity:'0.0'},"fast");
+				$("proceeds").slideUp();
+				$("proceeds").animate({opacity:'0.0'},"fast");
+				$("jissue").slideDown();
+				$("jissue").animate({opacity:'1.0'},"fast");
+				$("jvol").slideUp();
+				$("jvol").animate({opacity:'0.0'},"fast");
+			break;
+			case "JVolume":
+				$("books").slideUp();
+				$("books").animate({opacity:'0.0'},"fast");
+				$("proceeds").slideUp();
+				$("proceeds").animate({opacity:'0.0'},"fast");
+				$("jissue").slideUp();
+				$("jissue").animate({opacity:'0.0'},"fast");
+				$("jvol").slideDown();
+				$("jvol").animate({opacity:'1.0'},"fast");
+			break;
+			default:
+			break;
+		}
+	}
+
 
 	var addDocument = function(){
 		$("#mostborrowed").slideUp();
@@ -32,6 +83,10 @@
 		$(".readerViewClass").slideUp();
 		$(".docAdditionClass").animate({opacity:'1.0'},300);
 		$(".docAdditionClass").slideDown();
+		$("#jvol").slideUp();
+		$("#jissue").slideUp();
+		$("#proceeds").slideUp();
+		changeFunction();
 	}
 
 	var addReader = function(){
@@ -129,6 +184,46 @@
 				</div>
 				<p style="top: 40px; position: relative;">Publisher ID : </p><div class="textBox" style="top:40px;position: relative;">
 					<input type="text" name="publisherID">
+				</div>
+				<div id="books" style="opacity: 1.0">
+					<p style="top: 40px; position: relative;"> ISBN : </p><div class="textBox" style="top:40px;position: relative;">
+						<input type="text" name="publisherID">
+					</div>
+				</div>
+				<div id="jissue" style="opacity: 0.0">
+					<p style="top: 40px; position: relative;"> Issue No : </p><div class="textBox" style="top:40px;position: relative;">
+						<input type="text" name="publisherID">
+					</div>
+					<p style="top: 40px; position: relative;">Scope : </p><div class="textBox" style="top:40px;position: relative;">
+					<input type="text" name="publisherID">
+					</div>
+				</div>
+				<div id="jvol" style="opacity: 0.0">
+					<p style="top: 40px; position: relative;">Volume : </p><div class="textBox" style="top:40px;position: relative;">
+					<input type="text" name="publisherID">
+				</div>
+					<p style="top: 40px; position: relative;">Editor ID : </p><div class="textBox" style="top:40px;position: relative;">
+						<input type="text" name="publisherID">
+					</div>
+				</div>
+				<div id="proceeds" style="opacity: 0.0">
+					<p style="top: 40px; position: relative;"> Proceedings Date : </p><div class="textBox" style="top:40px;position: relative;">
+						<input type="text" name="publisherID">
+					</div>
+					<p style="top: 40px; position: relative;"> Proceedings Location : </p><div class="textBox" style="top:40px;position: relative;">
+						<input type="text" name="publisherID">
+					</div>
+					<p style="top: 40px; position: relative;"> Proceedings Editor : </p><div class="textBox" style="top:40px;position: relative;">
+						<input type="text" name="publisherID">
+					</div>
+				</div>
+				<p style="top: 40px; position: relative;">Type of Document : </p><div class="textBox" style="top: 40px; position: relative;">
+					<select id="docType" onclick="changeFunction();">
+							<option value="Books">Books</option>
+							<option value="Proceedings">Proceedings</option>
+							<option value="JIssue">Journal Issue</option>
+							<option value="JVolume">Journal Volume</option>
+					</select>
 				</div>
 				<input type="submit" id="documentAddButton" value="Add Document" style="top: 80px; left : 50%; position: relative;" />
 			</form>
