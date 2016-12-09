@@ -1,0 +1,121 @@
+<html>
+<head>
+<title>NJIT Library</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+ 	 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+ 	 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 	 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+ 	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$(".docAdditionClass").slideUp();
+		$(".branchViewClass").slideUp();
+		$(".readerViewClass").slideUp();
+		$(".supposedNextPage").animate({right:'0px',width:'100%',opacity:'1.0'},500);
+		$(".userNavBarRight").animate({left:'0px',opacity:'1.0'},500);
+		$("#readerName").animate({opacity:'1.0'},500);
+		$("#mostborrowed").slideUp();
+		$("#top").slideUp();
+		$("#top").hide();
+	});
+
+	var addDocument = function(){
+		$("#mostborrowed").slideUp();
+		$("#top").slideUp();
+		$("#top").hide();
+		$("#mostborrowed").slideToggle();
+		$(".branchViewClass").animate({opacity:'0.0'},300);
+		$(".branchViewClass").slideUp();
+		$(".readerViewClass").animate({opacity:'0.0'},300);
+		$(".readerViewClass").slideUp();
+		$(".docAdditionClass").animate({opacity:'1.0'},300);
+		$(".docAdditionClass").slideDown();
+	}
+
+	var addReader = function(){
+		$("#mostborrowed").slideUp("fast",function(){$("#top").slideUp("fast",function(){$("#top").hide();});});
+	}
+	
+	var logoutFunc = function(){
+
+	}
+
+	var searchFunc = function(){
+
+	}
+
+	var toptens = function(){
+		$("#top").show();
+		$("#top").slideDown();
+		$(".tops").animate({opacity:'1.0'},"fast");
+		$(".readerViewClass").animate({opacity:'0.0'},300);
+		$(".readerViewClass").slideUp();
+		$(".docAdditionClass").animate({opacity:'0.0'},300);
+		$(".docAdditionClass").slideUp();
+		$(".branchViewClass").animate({opacity:'0.0'},300);
+		$(".branchViewClass").slideUp();
+	}
+
+	var branchViewFunc = function() {
+		$("#top").hide();
+		$("#top").slideUp();
+		$(".tops").animate({opacity:'0.0'},"fast");
+		$(".readerViewClass").animate({opacity:'0.0'},300);
+		$(".readerViewClass").slideUp();
+		$(".docAdditionClass").animate({opacity:'0.0'},300);
+		$(".docAdditionClass").slideUp();
+		$(".branchViewClass").animate({opacity:'1.0'},300);
+		$(".branchViewClass").slideDown();
+	}
+
+	var readerViewFunc = function() {
+		$("#top").hide();
+		$("#top").slideUp();
+		$(".tops").animate({opacity:'0.0'},"fast");
+		$(".branchViewClass").animate({opacity:'0.0'},300);
+		$(".branchViewClass").slideUp();
+		$(".readerViewClass").animate({opacity:'1.0'},300);
+		$(".readerViewClass").slideDown();
+		$(".docAdditionClass").animate({opacity:'0.0'},300);
+		$(".docAdditionClass").slideUp();
+	}
+
+	var showMenuMostB = function(){
+		$("#mostborrowed").slideToggle();
+	}
+
+	var renderResponse = function(data){
+	}
+
+</script>
+</head>
+<body>
+	<div class="userNavBarRight">
+		<div>
+			<p id="readerName">{PLACEHOLDER}</p>
+			<button id="logoutButton" onclick="logoutFunc();"></button>
+		</div>
+		<div id="sectionNavigation">
+			<button style="top: 100px;" onclick="addDocument();">Add Document</button>
+			<button style="top: 150px;" onclick="addReader();">Add Reader</button>
+			<button style="top: 200px;" onclick="toptens();">Top 10s</button>
+			<button style="top: 250px;" onclick="branchViewFunc()">View Branch</button>
+			<button style="top: 300px;" onclick="readerViewFunc()">View Reader</button>
+		</div>
+	</div>
+	<div class="supposedNextPage">
+			<div id="container">
+
+			</div>
+		</div>
+	</div>
+	<footer>
+		<script type="text/javascript" src="./js/Datalayer.js"></script>
+		<script type="text/javascript" src="./js/App.js"></script>
+		<script type="text/javascript">App.ReaderReservations.init()</script>
+		<script type="text/javascript">$("#readerName").html("HELLO " + window.localStorage.getItem("username"))</script>
+	</footer>
+</body>
+</html>
