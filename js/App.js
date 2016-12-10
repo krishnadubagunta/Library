@@ -277,9 +277,9 @@ var App = {
 			App.ajax(App.API.GET_TOP_FOR_YEAR, {}, function(data){
 				console.log("GET_TOP_FOR_YEAR: ",data);
 				$("#top10byyear").html("");
-				// for (var i = 0; i < data.length; i++) {
-				// 	$("#top10byyear").append('<tr style="text-align:center" class="documentRow" id="'+data[i].libid+'"> <th style="border: 1px solid black;">' + data[i].libid + '</th><th style="border: 1px solid black;">' + data[i].lname + '</th> <td style="border: 1px solid black;">' + data[i].llocation + '</td> </tr>');
-				// }
+				for (var i = 0; i < data.length; i++) {
+					$("#top10byyear").append('<tr style="text-align:center" class="documentRow" id="'+data[i].libid+'"> <td style="border: 1px solid black;">' + data[i].year + '</td><th style="border: 1px solid black;">' + data[i].docid + '</th> <td style="border: 1px solid black;">' + data[i].title + '</td><td style="border: 1px solid black;">' + data[i].borrowCount + '</td> </tr>');
+				}
 			});
 
 
