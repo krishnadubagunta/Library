@@ -8,7 +8,7 @@
 
 	$sql = "INSERT INTO `borrows` 
 				(`bornumber`, `readerid`, `docid`, `copyno`, `libid`, `bdtime`, `rdtime`) 
-			VALUES (NULL, '$userid', '$docId', '$copyNo', '$libid', CURRENT_TIME(), '');";
+			VALUES (NULL, '$userid', '$docId', '$copyNo', '$libid', '".date('Y-m-d')."', '');";
 
 	$query = mysqli_query($conn, $sql);
 
