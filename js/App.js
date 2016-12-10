@@ -63,7 +63,7 @@ var App = {
 				if(readerData){
 					window.localStorage.setItem("userid",readerData.readerid);
 					window.localStorage.setItem("username",readerData.readername);
-					window.location.href = "reader.html"
+					window.location.href = "readerDocuments.html"
 				}else{
 					alert("Please Check Your Login Info");
 				}
