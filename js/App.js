@@ -125,6 +125,7 @@ var App = {
 
 	DocumentViewByBranch: {
 		init: function(){
+			App.init();
 			App.ajax(App.API.DOCS_BY_ID, {docid:window.location.href.split("docid=")[1]}, function(documents){
 				App.DocumentViewByBranch.RenderDocumentsTable(documents);
 			})
@@ -217,6 +218,7 @@ var App = {
 
 	ReservationsPage:{
 		init: function(){
+			App.init();
 			App.ajax(App.API.GET_RESERVATIONS, {readerId: window.localStorage.getItem("userid")}, function(res){
 				console.log("GET_RESERVATIONS: ",res);
 				App.DocumentViewByBranch.RenderDocumentsTable(res);
@@ -229,6 +231,7 @@ var App = {
 	AdminPage: {
 
 		init:function(){
+			App.init();
 			$("#documentAddButton").on('click',function(event){
 				event.preventDefault();
 				console.log("Adding Book...");
