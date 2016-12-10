@@ -22,7 +22,7 @@
 		if ($jsonHack) {print_r(",");}
 		else{$jsonHack=true;}
 
-	    print_r(json_encode($row) or '{c:"s"}');   
+	    print_r(json_encode($row));   
 	}
 	print_r("]"); 
 ?>
