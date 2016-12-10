@@ -148,6 +148,21 @@ input[type="submit"] {
 table {
 	border-collapse: separate;
 	border-spacing: 1em;
+	border-width: 0px;
+	overflow: scroll;
+	max-height: 500px;
+}
+
+thead {
+	background:rgba(243, 157, 77, 1)
+}
+
+tr {
+	border-width: 0px;
+}
+
+th {
+	border-width: 0px;
 }
 /*#cardDiv {
 	border-color: black;
