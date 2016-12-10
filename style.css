@@ -145,7 +145,10 @@ input[type="submit"] {
 	border:none;
 }
 
-
+table {
+	border-collapse: separate;
+	border-spacing: 1em;
+}
 /*#cardDiv {
 	border-color: black;
 	border-width: 1px;
