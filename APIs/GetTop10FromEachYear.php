@@ -10,13 +10,17 @@
 			GROUP BY year, docuemnt.docid
 			ORDER BY year DESC";
 
-	$query = mysqli_query($conn, $sql);
+	$jsonHack = false;
 
-	$rows = array();
-	while($r = mysqli_fetch_assoc($query)) {
-	    $rows[] = $r;
+	$query = mysqli_query($conn, $sql);
+	print_r("["); 
+	while($row = mysqli_fetch_assoc($query)){
+		if ($jsonHack) {print_r(",");}
+		else{$jsonHack=true;}
+
+	    print_r(json_encode($row or '{c:"s"}'));   
 	}
-	print json_encode($rows);
+	print_r("]"); 
 ?>
 
 
