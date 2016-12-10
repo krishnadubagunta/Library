@@ -140,7 +140,7 @@ var App = {
 				var reserveButton = "<button  onClick='App.DocumentViewByBranch.Reserve("+documents[i].docid+","+documents[i].copyno+","+documents[i].libid+")' style='width: auto; position: relative;'>Reserve</button> ";
 				var returnButton =  "<button onClick='App.DocumentViewByBranch.Return("+documents[i].bornumber+")' style='width: auto; position: relative;'>Return</button>";
 
-				console.log(documents[i].status)
+				console.log("here",documents[i]);
 				if (documents[i].status && documents[i].status === "0000-00-00 00:00:00") {
 					status = "Not Available";
 					if (documents[i].readerIdofBorrower === window.localStorage.getItem("userid")) {
@@ -166,7 +166,7 @@ var App = {
 					.append('<tr style="text-align:center" class="documentRow" id="'+documents[i].copyno+'">' +
 								'<th style="border: 1px solid black;">' + documents[i].docid + '</th>' 	+
 								'<td style="border: 1px solid black;">' + documents[i].title + '</td> '				+			
-								'<td style="border: 1px solid black;">' + documents[i].pubname + '</td> '				+
+								'<td style="border: 1px solid black;">' + documents[i].publisherid + '</td> '				+
 								'<td style="border: 1px solid black;">' + documents[i].lname + '</td> '				+
 								'<td style="border: 1px solid black;">' + documents[i].llocation + '</td>'			+
 								'<td style="border: 1px solid black;" class="statusCell">' + status + '</td>'			+
