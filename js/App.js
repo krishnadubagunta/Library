@@ -240,6 +240,15 @@ var App = {
 					alert("DONE!");
 				});
 			})
+
+			//get readers and fines
+			App.ajax(App.API.GET_READERS_WITH_FINES, {}, function(data){
+				console.log("GET_READERS_WITH_FINES: ",data);
+				$("#readerViewClassTableDocumentsTable").html("");
+				for (var i = 0; i < data.length; i++) {
+					$("#readerViewClassTableDocumentsTable").append('<tr style="text-align:center" class="documentRow" id="'+data[i].readerid+'"> <th style="border: 1px solid black;">' + data[i].readerid + '</th><th style="border: 1px solid black;">' + data[i].readername + '</th> <td style="border: 1px solid black;">$' + data[i].Fine + '</td> </tr>');
+				}
+			});
 		}
 
 	},
@@ -255,6 +264,7 @@ var App = {
 		RETURN: "./APIs/Return.php",
 		RESERVE: "./APIs/Reserve.php",
 		GET_RESERVATIONS: './APIs/GetReservationsById.php',
-		ADD_DOC:'./APIs/AddDoc.php'
+		ADD_DOC:'./APIs/AddDoc.php',
+		GET_READERS_WITH_FINES:'./APIs/GetReadersWithFines.php'
 	}
 }

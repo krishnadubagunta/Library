@@ -234,10 +234,22 @@
 				<input type="submit" id="branchSearchButton" value="Search Branch" style="top: 80px; left : 50%; position: relative;" />
 			</form>
 			<form class="readerViewClass">
-				<p style="top: 40px; position: relative;">Reader ID : </p><div class="textBox" style="top:40px; position: relative;">
-					<input type="text" name="readerID">
-				</div>
-				<input type="submit" id="readerSearchButton" value="Search Reader" style="top: 80px; left : 50%; position: relative;" />
+				<table class="readerViewClassTable" style="width: 100%; margin-left: 23%; top: 12px; padding-top: 60px;">
+				  <thead class="thead-inverse" style="background: #8ab8df">
+				    <tr>
+				      <th>Reader ID</th>
+				      <th>Reader Name</th>
+				      <th>Avg Fine</th>
+				    </tr>
+				  </thead>
+				  <tbody id="readerViewClassTableDocumentsTable">
+				  <tr>
+				  	<td>1</td>
+				  	<td>Michael Citro</td>
+				  	<td>400</td>
+				  </tr>
+				  </tbody>
+				</table>
 			</form>
 			</div>
 		</div>
@@ -249,3 +261,6 @@
 	</footer>
 </body>
 </html>
+
+
+
