@@ -145,22 +145,6 @@ input[type="submit"] {
 	border:none;
 }
 
-::-webkit-input-placeholder {
-   color: black;
-}
-
-:-moz-placeholder {  /*Firefox 18- */
-   color: black;  
-}
-
-::-moz-placeholder {  /*Firefox 19+ */
-   color: black;  
-}
-
-:-ms-input-placeholder {  
-   color: black;  
-
-}
 
 /*#cardDiv {
 	border-color: black;
