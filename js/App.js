@@ -249,7 +249,7 @@ var App = {
 				console.log("GET_READERS_WITH_FINES: ",data);
 				$("#readerViewClassTableDocumentsTable").html("");
 				for (var i = 0; i < data.length; i++) {
-					$("#readerViewClassTableDocumentsTable").append('<tr style="text-align:center" class="documentRow" id="'+data[i].readerid+'"> <th style="border: 1px solid black;">' + data[i].readerid + '</th><th style="border: 1px solid black;">' + data[i].readername + '</th> <td style="border: 1px solid black;">$' + data[i].Fine + '</td> </tr>');
+					$("#readerViewClassTableDocumentsTable").append('<tr style="text-align:center" class="documentRow" id="'+data[i].libid+'"> <th style="border: 1px solid black;">' + data[i].readerid + '</th><th style="border: 1px solid black;">' + data[i].readername + '</th> <td style="border: 1px solid black;">$' + data[i].Fine + '</td> </tr>');
 				}
 			});
 
@@ -260,6 +260,37 @@ var App = {
 				for (var i = 0; i < data.length; i++) {
 					$("#branchViewClassTableDocumentsTable").append('<tr style="text-align:center" class="documentRow" id="'+data[i].libid+'"> <th style="border: 1px solid black;">' + data[i].libid + '</th><th style="border: 1px solid black;">' + data[i].lname + '</th> <td style="border: 1px solid black;">' + data[i].llocation + '</td> </tr>');
 				}
+			});
+
+
+			//get GetBranchTop10Borrowers
+			App.ajax(App.API.GET_TOP_BOROWERS, {}, function(data){
+				console.log("GET_TOP_BOROWERS: ",data);
+				$("#top10borowers").html("");
+				for (var i = 0; i < data.length; i++) {
+					$("#top10borowers").append('<tr style="text-align:center" class="documentRow"> <td style="border: 1px solid black;">' + data[i].libid + '</td> <td style="border: 1px solid black;">' + data[i].lname + '</td> <td style="border: 1px solid black;">' + data[i].readerid + '</td> <td style="border: 1px solid black;">' + data[i].readername + '</td> <td style="border: 1px solid black;">' + data[i].booksOut + '</td> </tr>');
+				}
+			});
+
+
+			//get GetTop10FromEachYear
+			App.ajax(App.API.GET_TOP_FOR_YEAR, {}, function(data){
+				console.log("GET_TOP_FOR_YEAR: ",data);
+				$("#top10byyear").html("");
+				// for (var i = 0; i < data.length; i++) {
+				// 	$("#top10byyear").append('<tr style="text-align:center" class="documentRow" id="'+data[i].libid+'"> <th style="border: 1px solid black;">' + data[i].libid + '</th><th style="border: 1px solid black;">' + data[i].lname + '</th> <td style="border: 1px solid black;">' + data[i].llocation + '</td> </tr>');
+				// }
+			});
+
+
+
+			//get MostBorrowedBooksByLib
+			App.ajax(App.API.GET_TOP_BRANCH_BORROWED, {}, function(data){
+				console.log("GET_TOP_BRANCH_BORROWED: ",data);
+				$("#top10bybranch").html("");
+				// for (var i = 0; i < data.length; i++) {
+				// 	$("#top10bybranch").append('<tr style="text-align:center" class="documentRow" id="'+data[i].libid+'"> <th style="border: 1px solid black;">' + data[i].libid + '</th><th style="border: 1px solid black;">' + data[i].lname + '</th> <td style="border: 1px solid black;">' + data[i].llocation + '</td> </tr>');
+				// }
 			});
 		}
 
@@ -278,6 +309,9 @@ var App = {
 		GET_RESERVATIONS: './APIs/GetReservationsById.php',
 		ADD_DOC:'./APIs/AddDoc.php',
 		GET_READERS_WITH_FINES:'./APIs/GetReadersWithFines.php',
-		GET_GRANCH_INFO:'./APIs/GetBranchInfo.php'
+		GET_GRANCH_INFO:'./APIs/GetBranchInfo.php',
+		GET_TOP_BOROWERS:'./APIs/GetBranchTop10Borrowers.php',
+		GET_TOP_FOR_YEAR:'./APIs/GetTop10FromEachYear.php',
+		GET_TOP_BRANCH_BORROWED:'./APIs/MostBorrowedBooksByLib.php'
 	}
 }

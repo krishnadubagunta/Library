@@ -135,16 +135,58 @@
 			<button id="searchButton" onclick='window.location.href = "adminSearch.html"'></button>
 			<div id="container">
 				<div id="top">
-					<button class="tops" style="left: 100px; width: 200px;">Frequent Borrowers</button>
-					<button class="tops" style="left: 400px;">Popular Books</button>
-					<button class="tops" style="left: 700px; width: 200px;" onclick="showMenuMostB();">Most Borrowed Books</button>
-					<div id="mostborrowed">
-						<p>Branch</p>
-						<div id="branchDiv">
-							<input type="text" placeholder="Branch"/>
-							<button style="width: 30px; height: 30px;">Go</button>
-						</div>
-					</div>
+					
+
+
+				<table class="top10borowers" style="width: 100%; margin-left: 23%; top: 12px; padding-top: 60px;">
+				  <thead class="thead-inverse" style="background: #8ab8df">
+				  <tr><th><h3>Top Borrowers By Branch</h3></th></tr>
+				    <tr>
+				      <th>Branch ID</th>
+				      <th>Branch Name</th>
+				      <th>Reader ID</th>
+				      <th>reader Name</th>
+				      <th>Books Borrowed</th>
+				    </tr>
+				  </thead>
+				  <tbody id="top10borowers">
+				  </tbody>
+				</table>
+
+				<table class="top10bybranch" style="width: 100%; margin-left: 23%; top: 12px; padding-top: 60px;">
+				  <thead class="thead-inverse" style="background: #8ab8df">
+				    <tr>
+				      <th>Branch ID</th>
+				      <th>Book Id</th>
+				      <th>Book Title</th>
+				    </tr>
+				  </thead>
+				  <tbody id="top10bybranch">
+				  </tbody>
+				</table>
+
+				<table class="top10byyear" style="width: 100%; margin-left: 23%; top: 12px; padding-top: 60px;">
+				  <thead class="thead-inverse" style="background: #8ab8df">
+				    <tr>
+				      <th>Book Id</th>
+				      <th>Book Title</th>
+				      <th>Times Borrowed</th>
+				      <th>Year</th>
+				    </tr>
+				  </thead>
+				  <tbody id="top10byyear">
+				  </tbody>
+				</table>
+
+
+
+
+
+
+
+
+
+
 				</div>
 				<form class="addReaderClass" style="opacity: 0.0">
 					<p style="top: 40px; position: relative;"> Reader Name : </p> <div class="textBox" style="top:40px; position: relative;">
@@ -203,6 +245,3 @@
 	</footer>
 </body>
 </html>
-
-
-

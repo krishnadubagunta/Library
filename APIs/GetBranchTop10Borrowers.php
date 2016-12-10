@@ -7,14 +7,24 @@
 	$sql = "SELECT count(readers.readerid) as booksOut, 
 				   readers.readername, 
 				   branch.libid, 
-				   branch.lname
+				   branch.lname,
+				   readers.readerid
 			FROM branch, readers, borrows
 			WHERE branch.libid = borrows.libid and readers.readerid = borrows.readerid
 			GROUP BY readers.readername, branch.libid, branch.lname
 			ORDER BY branch.libid DESC, booksOut DESC";
 
-	$results = mysqli_fetch_assoc($conn->query($sql));
-	print json_encode($results);
+	$jsonHack = false;
+
+	$query = mysqli_query($conn, $sql);
+	print_r("["); 
+	while($row = mysqli_fetch_assoc($query)){
+		if ($jsonHack) {print_r(",");}
+		else{$jsonHack=true;}
+
+	    print_r(json_encode($row));   
+	}
+	print_r("]"); 
 ?>
 
 

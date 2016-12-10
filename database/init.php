@@ -70,7 +70,7 @@
 
 
 	// -------CREATE DOCUMENT TABLE----
-	$sql = "CREATE TABLE  IF NOT EXISTS docuemnt 
+	$sql = "CREATE TABLE  IF NOT EXISTS document 
 			( 	docid 		INT NOT NULL AUTO_INCREMENT , 
 				title 		VARCHAR(255) NOT NULL , 
 				pdate		DATE NOT NULL,
@@ -102,7 +102,7 @@
 				INDEX libid_index (libid),
 
 			    FOREIGN KEY (docid)
-			        REFERENCES docuemnt(docid)
+			        REFERENCES document(docid)
 			        ON DELETE CASCADE,
 
 			    FOREIGN KEY (libid)
@@ -211,7 +211,7 @@
 
 
 			    FOREIGN KEY (docid)
-			        REFERENCES docuemnt(docid)
+			        REFERENCES document(docid)
 			        ON DELETE CASCADE,
 
 			PRIMARY KEY (`docid`)) 
@@ -251,7 +251,7 @@
 	//----------------END-------------
 
 	// -------CREATE TABLE PROCEEDINGS----
-	$sql = "CREATE TABLE IF NOT EXISTS proceesings 
+	$sql = "CREATE TABLE IF NOT EXISTS proceedings 
 			( 	docid 		INT NOT NULL , 
 				cdate       DATE not null,
 				clocation   VARCHAR(255) not null,
@@ -261,7 +261,7 @@
 
 
 			    FOREIGN KEY (docid)
-			        REFERENCES docuemnt(docid)
+			        REFERENCES document(docid)
 			        ON DELETE CASCADE,
 
 			PRIMARY KEY (`docid`)) 
@@ -301,7 +301,7 @@
 
 
 			    FOREIGN KEY (docid)
-			        REFERENCES docuemnt(docid)
+			        REFERENCES document(docid)
 			        ON DELETE CASCADE,  
 
 			    FOREIGN KEY (editorid)
