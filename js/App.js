@@ -288,9 +288,9 @@ var App = {
 			App.ajax(App.API.GET_TOP_BRANCH_BORROWED, {}, function(data){
 				console.log("GET_TOP_BRANCH_BORROWED: ",data);
 				$("#top10bybranch").html("");
-				// for (var i = 0; i < data.length; i++) {
-				// 	$("#top10bybranch").append('<tr style="text-align:center" class="documentRow" id="'+data[i].libid+'"> <th style="border: 1px solid black;">' + data[i].libid + '</th><th style="border: 1px solid black;">' + data[i].lname + '</th> <td style="border: 1px solid black;">' + data[i].llocation + '</td> </tr>');
-				// }
+				for (var i = 0; i < data.length; i++) {
+					$("#top10bybranch").append('<tr style="text-align:center" class="documentRow" id="'+data[i].libid+'"> <td style="border: 1px solid black;">' + data[i].libid + '</td> <td style="border: 1px solid black;">' + data[i].docuemntTitle + '</td> <td style="border: 1px solid black;">' + data[i].amountBorrowed + '</td> </tr>');
+				}
 			});
 		}
 
