@@ -349,3 +349,14 @@ select {
 	display: inline-block;
 	z-index: 1;
 }
+
+.addReaderClass {
+	font-family: 'Courier';
+	font-size: 13px;
+	position: absolute;
+	top: 40px;
+	left: 30%;
+	background-color: inherit;
+	display: inline-block;
+	z-index: 1;
+}

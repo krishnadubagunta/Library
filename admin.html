@@ -10,7 +10,9 @@
 
 	<script type="text/javascript">
 	$(document).ready(function(){
-		$(".docAdditionClass").slideUp();
+		$(".docAdditionClass").animate({opacity:'1.0'},300);
+		$(".addReaderClass").slideUp();
+		$(".docAdditionClass").slideDown();
 		$(".branchViewClass").slideUp();
 		$(".readerViewClass").slideUp();
 		$(".supposedNextPage").animate({right:'0px',width:'100%',opacity:'1.0'},500);
@@ -22,75 +24,38 @@
 
 	});
 
-	var changeFunction = function(){
-		var selectedOpt = document.getElementById("docType").value;
-		console.log(selectedOpt);
-		switch(selectedOpt){
-			case "Books":
-				$("books").slideDown();
-				$("books").animate({opacity:'1.0'},"fast");
-				$("proceeds").slideUp();
-				$("proceeds").animate({opacity:'0.0'},"fast");
-				$("jissue").slideUp();
-				$("jissue").animate({opacity:'0.0'},"fast");
-				$("jvol").slideUp();
-				$("jvol").animate({opacity:'0.0'},"fast");
-			break;
-			case "Proceedings":
-				$("books").slideUp();
-				$("books").animate({opacity:'0.0'},"fast");
-				$("proceeds").slideDown();
-				$("proceeds").animate({opacity:'1.0'},"fast");
-				$("jissue").slideUp();
-				$("jissue").animate({opacity:'0.0'},"fast");
-				$("jvol").slideUp();
-				$("jvol").animate({opacity:'0.0'},"fast");
-			break;
-			case "JIssue":
-				$("books").slideUp();
-				$("books").animate({opacity:'0.0'},"fast");
-				$("proceeds").slideUp();
-				$("proceeds").animate({opacity:'0.0'},"fast");
-				$("jissue").slideDown();
-				$("jissue").animate({opacity:'1.0'},"fast");
-				$("jvol").slideUp();
-				$("jvol").animate({opacity:'0.0'},"fast");
-			break;
-			case "JVolume":
-				$("books").slideUp();
-				$("books").animate({opacity:'0.0'},"fast");
-				$("proceeds").slideUp();
-				$("proceeds").animate({opacity:'0.0'},"fast");
-				$("jissue").slideUp();
-				$("jissue").animate({opacity:'0.0'},"fast");
-				$("jvol").slideDown();
-				$("jvol").animate({opacity:'1.0'},"fast");
-			break;
-			default:
-			break;
-		}
-	}
+
 
 
 	var addDocument = function(){
 		$("#mostborrowed").slideUp();
 		$("#top").slideUp();
 		$("#top").hide();
-		$("#mostborrowed").slideToggle();
+		// $("#mostborrowed").slideToggle();
 		$(".branchViewClass").animate({opacity:'0.0'},300);
 		$(".branchViewClass").slideUp();
 		$(".readerViewClass").animate({opacity:'0.0'},300);
 		$(".readerViewClass").slideUp();
 		$(".docAdditionClass").animate({opacity:'1.0'},300);
 		$(".docAdditionClass").slideDown();
-		$("#jvol").slideUp();
-		$("#jissue").slideUp();
-		$("#proceeds").slideUp();
-		changeFunction();
+		$(".addReaderClass").animate({opacity:'0.0'},300);
+		$(".addReaderClass").slideUp();
 	}
 
 	var addReader = function(){
-		$("#mostborrowed").slideUp("fast",function(){$("#top").slideUp("fast",function(){$("#top").hide();});});
+		// $("#mostborrowed").slideUp("fast",function(){$("#top").slideUp("fast",function(){$("#top").hide();});});
+		$("#mostborrowed").slideUp();
+		$("#top").slideUp();
+		$("#top").hide();
+		$("#mostborrowed").slideUp();
+		$(".branchViewClass").animate({opacity:'0.0'},300);
+		$(".branchViewClass").slideUp();
+		$(".readerViewClass").animate({opacity:'0.0'},300);
+		$(".readerViewClass").slideUp();
+		$(".docAdditionClass").animate({opacity:'0.0'},300);
+		$(".docAdditionClass").slideUp();
+		$(".addReaderClass").animate({opacity:'1.0'},300);
+		$(".addReaderClass").slideDown();
 	}
 	
 	var logoutFunc = function(){
@@ -111,6 +76,8 @@
 		$(".docAdditionClass").slideUp();
 		$(".branchViewClass").animate({opacity:'0.0'},300);
 		$(".branchViewClass").slideUp();
+		$(".addReaderClass").animate({opacity:'0.0'},300);
+		$(".addReaderClass").slideUp();
 	}
 
 	var branchViewFunc = function() {
@@ -123,6 +90,8 @@
 		$(".docAdditionClass").slideUp();
 		$(".branchViewClass").animate({opacity:'1.0'},300);
 		$(".branchViewClass").slideDown();
+		$(".addReaderClass").animate({opacity:'0.0'},300);
+		$(".addReaderClass").slideUp();
 	}
 
 	var readerViewFunc = function() {
@@ -135,6 +104,8 @@
 		$(".readerViewClass").slideDown();
 		$(".docAdditionClass").animate({opacity:'0.0'},300);
 		$(".docAdditionClass").slideUp();
+		$(".addReaderClass").animate({opacity:'0.0'},300);
+		$(".addReaderClass").slideUp();
 	}
 
 	var showMenuMostB = function(){
@@ -175,6 +146,15 @@
 						</div>
 					</div>
 				</div>
+				<form class="addReaderClass" style="opacity: 0.0">
+					<p style="top: 40px; position: relative;"> Reader Name : </p> <div class="textBox" style="top:40px; position: relative;">
+						<input type="text" name="readName" placeholder="Name"></div>
+					<p style="top: 40px; position: relative;">Reader Address : </p><div class="textBox" style="top:40px;position: relative;">
+						<input type="text" name="readAddress" placeholder="Address">
+					</div>
+					<input type="submit" id="documentAddButton" value="Add Document" style="top: 80px; left : 50%; position: relative;" />
+					</div>
+				</form>
 				<form class="docAdditionClass" style="opacity: 0.0">
 				<p style="top: 40px; position: relative;">Document Name : </p><div class="textBox" style="top:40px; position: relative;">
 					<input type="text" name="docName">
@@ -185,49 +165,9 @@
 				<p style="top: 40px; position: relative;">Publisher ID : </p><div class="textBox" style="top:40px;position: relative;">
 					<input type="text" name="publisherID">
 				</div>
-				<div id="books" style="opacity: 1.0">
-					<p style="top: 40px; position: relative;"> ISBN : </p><div class="textBox" style="top:40px;position: relative;">
-						<input type="text" name="ISB">
-					</div>
-				</div>
-				<div id="jissue" style="opacity: 0.0">
-					<p style="top: 40px; position: relative;"> Issue No : </p><div class="textBox" style="top:40px;position: relative;">
-						<input type="text" name="IssueNo">
-					</div>
-					<p style="top: 40px; position: relative;">Scope : </p><div class="textBox" style="top:40px;position: relative;">
-					<input type="text" name="Scope">
-					</div>
-				</div>
-				<div id="jvol" style="opacity: 0.0">
-					<p style="top: 40px; position: relative;">Volume : </p><div class="textBox" style="top:40px;position: relative;">
-					<input type="text" name="">
-				</div>
-					<p style="top: 40px; position: relative;">Editor ID : </p><div class="textBox" style="top:40px;position: relative;">
-						<input type="text" name="">
-					</div>
-				</div>
-				<div id="proceeds" style="opacity: 0.0">
-					<p style="top: 40px; position: relative;"> Proceedings Date : </p><div class="textBox" style="top:40px;position: relative;">
-						<input type="text" name="">
-					</div>
-					<p style="top: 40px; position: relative;"> Proceedings Location : </p><div class="textBox" style="top:40px;position: relative;">
-						<input type="text" name="">
-					</div>
-					<p style="top: 40px; position: relative;"> Proceedings Editor : </p><div class="textBox" style="top:40px;position: relative;">
-						<input type="text" name="">
-					</div>
-				</div>
-				<p style="top: 40px; position: relative;">Type of Document : </p><div class="textBox" style="top: 40px; position: relative;">
-					<select id="docType" onclick="changeFunction();">
-							<option value="Books">Books</option>
-							<option value="Proceedings">Proceedings</option>
-							<option value="JIssue">Journal Issue</option>
-							<option value="JVolume">Journal Volume</option>
-					</select>
-				</div>
 				<input type="submit" id="documentAddButton" value="Add Document" style="top: 80px; left : 50%; position: relative;" />
 			</form>
-			<form class="branchViewClass">
+			<form class="branchViewClass" style="opacity: 0.0">
 				<table class="branchViewClassTable" style="width: 100%; margin-left: 23%; top: 12px; padding-top: 60px;">
 				  <thead class="thead-inverse" style="background: #8ab8df">
 				    <tr>
@@ -240,7 +180,7 @@
 				  </tbody>
 				</table>
 			</form>
-			<form class="readerViewClass">
+			<form class="readerViewClass" style="opacity: 0.0">
 				<table class="readerViewClassTable" style="width: 100%; margin-left: 23%; top: 12px; padding-top: 60px;">
 				  <thead class="thead-inverse" style="background: #8ab8df">
 				    <tr>
