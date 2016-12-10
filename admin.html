@@ -228,10 +228,17 @@
 				<input type="submit" id="documentAddButton" value="Add Document" style="top: 80px; left : 50%; position: relative;" />
 			</form>
 			<form class="branchViewClass">
-				<p style="top: 40px; position: relative;"> Branch ID : </p><div class="textBox" style="top:40px;position: relative;">
-					<input type="text" name="branchID">
-				</div>
-				<input type="submit" id="branchSearchButton" value="Search Branch" style="top: 80px; left : 50%; position: relative;" />
+				<table class="branchViewClassTable" style="width: 100%; margin-left: 23%; top: 12px; padding-top: 60px;">
+				  <thead class="thead-inverse" style="background: #8ab8df">
+				    <tr>
+				      <th>Branch ID</th>
+				      <th>Branch Name</th>
+				      <th>Branch Location</th>
+				    </tr>
+				  </thead>
+				  <tbody id="branchViewClassTableDocumentsTable">
+				  </tbody>
+				</table>
 			</form>
 			<form class="readerViewClass">
 				<table class="readerViewClassTable" style="width: 100%; margin-left: 23%; top: 12px; padding-top: 60px;">
@@ -243,11 +250,6 @@
 				    </tr>
 				  </thead>
 				  <tbody id="readerViewClassTableDocumentsTable">
-				  <tr>
-				  	<td>1</td>
-				  	<td>Michael Citro</td>
-				  	<td>400</td>
-				  </tr>
 				  </tbody>
 				</table>
 			</form>

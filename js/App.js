@@ -252,6 +252,15 @@ var App = {
 					$("#readerViewClassTableDocumentsTable").append('<tr style="text-align:center" class="documentRow" id="'+data[i].readerid+'"> <th style="border: 1px solid black;">' + data[i].readerid + '</th><th style="border: 1px solid black;">' + data[i].readername + '</th> <td style="border: 1px solid black;">$' + data[i].Fine + '</td> </tr>');
 				}
 			});
+
+			//get branchs
+			App.ajax(App.API.GET_GRANCH_INFO, {}, function(data){
+				console.log("GET_GRANCH_INFO: ",data);
+				$("#branchViewClassTableDocumentsTable").html("");
+				for (var i = 0; i < data.length; i++) {
+					$("#branchViewClassTableDocumentsTable").append('<tr style="text-align:center" class="documentRow" id="'+data[i].libid+'"> <th style="border: 1px solid black;">' + data[i].libid + '</th><th style="border: 1px solid black;">' + data[i].lname + '</th> <td style="border: 1px solid black;">' + data[i].llocation + '</td> </tr>');
+				}
+			});
 		}
 
 	},
@@ -268,6 +277,7 @@ var App = {
 		RESERVE: "./APIs/Reserve.php",
 		GET_RESERVATIONS: './APIs/GetReservationsById.php',
 		ADD_DOC:'./APIs/AddDoc.php',
-		GET_READERS_WITH_FINES:'./APIs/GetReadersWithFines.php'
+		GET_READERS_WITH_FINES:'./APIs/GetReadersWithFines.php',
+		GET_GRANCH_INFO:'./APIs/GetBranchInfo.php'
 	}
 }
