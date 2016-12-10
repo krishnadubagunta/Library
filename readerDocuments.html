@@ -42,7 +42,7 @@
 				    <tr>
 				      <th>Doc ID</th>
 				      <th>Title</th>
-				      <th>Publisher</th>
+				      <th>Fine</th>
 				    </tr>
 				  </thead>
 				  <tbody id="DocumentsTable">
@@ -53,8 +53,16 @@
 	<footer>
 		<script type="text/javascript" src="./js/App.js"></script>
 		<script type="text/javascript">
-			App.init();
+			//App.init();
 			$("#readerName").html("Hello " + window.localStorage.getItem("username"))
+
+			App.ajax("./APIs/GetMyDocuments.php", {readerid:localStorage.getItem('userid')}, function(data){
+				console.log("GET_TOP_BRANCH_BORROWED: ",data);
+				$("#DocumentsTable").html("");
+				for (var i = 0; i < data.length; i++) {
+					$("#DocumentsTable").append('<tr style="text-align:center" class="documentRow" id="'+data[i].libid+'"> <td style="border: 1px solid black;">' + data[i].docid + '</td><th style="border: 1px solid black;">' + data[i].title + '</th> <td style="border: 1px solid black;">$' + data[i].Fine + '</td> </tr>');
+				}
+			});
 		</script>
 	</footer>
 </body>
