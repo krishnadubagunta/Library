@@ -242,6 +242,18 @@ var App = {
 					console.log("READER_LOGIN: ",data);
 					alert("DONE!");
 				});
+			})	
+
+			$("#documentAddButtonReader").on('click',function(event){
+				event.preventDefault();
+				console.log("Adding Book...");
+				var form = this.closest("form");
+				var data = $(form).serialize();
+
+				App.ajax(App.API.AddReader, data, function(data){
+					console.log("AddReader: ",data);
+					alert("DONE!");
+				});
 			})
 
 			//get readers and fines
@@ -292,6 +304,9 @@ var App = {
 					$("#top10bybranch").append('<tr style="text-align:center" class="documentRow" id="'+data[i].libid+'"> <td style="border: 1px solid black;">' + data[i].libid + '</td> <td style="border: 1px solid black;">' + data[i].docuemntTitle + '</td> <td style="border: 1px solid black;">' + data[i].amountBorrowed + '</td> </tr>');
 				}
 			});
+
+
+			
 		}
 
 	},
@@ -312,6 +327,7 @@ var App = {
 		GET_GRANCH_INFO:'./APIs/GetBranchInfo.php',
 		GET_TOP_BOROWERS:'./APIs/GetBranchTop10Borrowers.php',
 		GET_TOP_FOR_YEAR:'./APIs/GetTop10FromEachYear.php',
-		GET_TOP_BRANCH_BORROWED:'./APIs/MostBorrowedBooksByLib.php'
+		GET_TOP_BRANCH_BORROWED:'./APIs/MostBorrowedBooksByLib.php',
+		AddReader:'./APIs/AddReader.php'
 	}
 }
